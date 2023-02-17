@@ -93,8 +93,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6926461108100803223}
-  - component: {fileID: 6926461108100803222}
   - component: {fileID: 6926461108100803221}
+  - component: {fileID: 6926461108100803222}
   m_Layer: 0
   m_Name: DirectionSwitch
   m_TagString: Untagged
@@ -118,22 +118,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6926461108100803222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6926461108100803209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c119cc852b00be24a85678d9a5484db9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conveyorBelt: {fileID: 0}
-  right: {fileID: 21300000, guid: b1c883b5266fb1440b8f5b172ca59f36, type: 3}
-  left: {fileID: 21300000, guid: 9ce55b233a2ef704b9e29acf3d75a230, type: 3}
-  iconRenderer: {fileID: 4291890302470545395}
 --- !u!61 &6926461108100803221
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -166,7 +150,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
+  m_Offset: {x: 0.5059545, y: -0.50000006}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -177,5 +161,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0001, y: 1}
+  m_Size: {x: 0.9374783, y: 0.9583188}
   m_EdgeRadius: 0
+--- !u!114 &6926461108100803222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926461108100803209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c119cc852b00be24a85678d9a5484db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateOne: {fileID: 21300000, guid: b1c883b5266fb1440b8f5b172ca59f36, type: 3}
+  stateTwo: {fileID: 21300000, guid: 9ce55b233a2ef704b9e29acf3d75a230, type: 3}
+  iconRenderer: {fileID: 4291890302470545395}
+  signalType: 1

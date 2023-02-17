@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
@@ -35,7 +36,7 @@ namespace SadBrains
             SetSpeed();
         }
 
-        public void FlipDirection()
+        private void FlipDirection()
         {
             _direction *= -1;
             SetSpeed();
@@ -51,17 +52,36 @@ namespace SadBrains
             SetSpeed();
         }
         
-        public override void DisableCollision()
+        protected override void DisableCollision()
         {
             base.DisableCollision();
             spriteRenderer.DOFade(0.5f, 0.1f);
         }
 
-        public override void EnableCollision()
+        protected override void EnableCollision()
         {
             base.EnableCollision();
             spriteRenderer.DOFade(1.0f, 0.1f);
         }
-    
+
+        public override bool CanReceiveSignal(DeviceSignal signal)
+        {
+            if (signal == DeviceSignal.Direction) return true;
+            return false;
+        }
+        
+        public override void ReceiveSignal(DeviceSignal signal)
+        {
+            if (signal != DeviceSignal.Direction) return;
+            FlipDirection();
+        }
+
+        public override int GetCurrentSignalState(DeviceSignal signal)
+        {
+            if (signal != DeviceSignal.Direction) return 0;
+
+            return _direction == 1 ? 0 : 1;
+        }
+        
     }
 }

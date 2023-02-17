@@ -1,27 +1,18 @@
-﻿using UnityEngine;
+﻿
 
 namespace SadBrains
 {
-    public abstract class Device : MonoBehaviour
+    public abstract class Device : Placeable
     {
-        public int width;
-        public int height;
+        public abstract bool CanReceiveSignal(DeviceSignal signal);
         
-        public BoxCollider2D Collider2D { get; private set; }
+        public abstract void ReceiveSignal(DeviceSignal signal);
 
-        protected virtual void Awake()
+        public abstract int GetCurrentSignalState(DeviceSignal signal);
+        
+        public override bool Place()
         {
-            Collider2D = GetComponent<BoxCollider2D>();
-        }
-
-        public virtual void DisableCollision()
-        {
-            Collider2D.enabled = false;
-        }
-
-        public virtual void EnableCollision()
-        {
-            Collider2D.enabled = true;
+            return !CollisionChecker.IsColliding(gameObject, Collider2D.bounds.center, Collider2D.size);
         }
     }
 }

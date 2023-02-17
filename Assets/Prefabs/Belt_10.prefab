@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 409193705501009865}
   - component: {fileID: 5437542924708389316}
   - component: {fileID: 6043235363881632851}
-  - component: {fileID: 7927582602123374155}
   m_Layer: 0
   m_Name: Belt_10
   m_TagString: Untagged
@@ -86,7 +85,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
+  m_Offset: {x: -0.0026700497, y: -0.5026702}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -97,7 +96,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 1}
+  m_Size: {x: 9.919895, y: 0.9732982}
   m_EdgeRadius: 0
 --- !u!114 &6043235363881632851
 MonoBehaviour:
@@ -111,26 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6966610fd36c6d540ad7d0c95303751f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 10
-  height: 1
   spriteRenderer: {fileID: 6043235365557528414}
   baseSpeed: 5
   speedMods:
   - 1
   - 2
   - 3
---- !u!114 &7927582602123374155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6043235363881632850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3deaf53088ef49bfa8957e977030c010, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6043235365557528409
 GameObject:
   m_ObjectHideFlags: 0
