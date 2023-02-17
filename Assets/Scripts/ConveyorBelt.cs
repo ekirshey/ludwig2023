@@ -1,12 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 namespace SadBrains
 {
     public class ConveyorBelt : Device
     {
+        [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private float baseSpeed;
         [SerializeField] private List<float> speedMods;
     
@@ -48,6 +49,18 @@ namespace SadBrains
                 _currentModIdx = 0;
             }
             SetSpeed();
+        }
+        
+        public override void DisableCollision()
+        {
+            base.DisableCollision();
+            spriteRenderer.DOFade(0.5f, 0.1f);
+        }
+
+        public override void EnableCollision()
+        {
+            base.EnableCollision();
+            spriteRenderer.DOFade(1.0f, 0.1f);
         }
     
     }

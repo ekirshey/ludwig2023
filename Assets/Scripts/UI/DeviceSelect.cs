@@ -2,7 +2,7 @@
 
 namespace SadBrains.UI
 {
-    public class DevicePanel : MonoBehaviour
+    public class DeviceSelect : MonoBehaviour
     {
         
     }
