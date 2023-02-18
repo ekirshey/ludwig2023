@@ -1,23 +1,39 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SadBrains
 {
     public class Coots : MonoBehaviour
     {
-        public bool CorrectCoots { get; private set; }
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        public CootsType CootsType { get; private set; }
 
-        private SpriteRenderer _spriteRenderer;
+        private Rigidbody2D _rigidbody2D;
 
         private void Awake()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+        }
+        
+        public void SetType(CootsType type)
+        {
+            CootsType = type;
+            spriteRenderer.sprite = type.sprite;
         }
 
-        public void SetCorrect()
+        public void ResetPosition()
         {
-            CorrectCoots = true;
-            _spriteRenderer.color = Color.blue;
+            transform.rotation = Quaternion.identity;
+            _rigidbody2D.velocity = new Vector2();
+        }
+
+        public void DisableRigidBody()
+        {
+            _rigidbody2D.isKinematic = true;
+        }
+
+        public void EnableRigidBody()
+        {
+            _rigidbody2D.isKinematic = false;
         }
     }
 }

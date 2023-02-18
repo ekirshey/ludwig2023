@@ -84,6 +84,12 @@ namespace SadBrains
         
         public override bool Place()
         {
+            // first check normal collisions
+            if(CollisionChecker.IsColliding(gameObject, Collider2D.bounds.center, Collider2D.size))
+            {
+                return false;
+            }
+            
             var collisions = CollisionChecker.GetCollisions(gameObject, _collider.bounds.center, _collider.size * 2);
 
             if (collisions.Count == 0)

@@ -70,7 +70,6 @@ namespace SadBrains
                 IsMoving = false;
                 EnableCollision();
             }
-            
         }
         
         public abstract bool Place();

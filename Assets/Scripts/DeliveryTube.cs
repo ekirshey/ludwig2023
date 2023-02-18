@@ -5,6 +5,7 @@ namespace SadBrains
 {
     public class DeliveryTube : MonoBehaviour
     {
+        [SerializeField] private CootsType cootsType;
         public static event Action DeliveredBadCoots;
         public static event Action DeliveredGoodCoots;
         
@@ -13,7 +14,8 @@ namespace SadBrains
             var coots = col.GetComponent<Coots>();
             if (coots == null) return;
             
-            if (!coots.CorrectCoots)
+            
+            if (coots.CootsType != cootsType)
             {
                 DeliveredBadCoots?.Invoke();
             }

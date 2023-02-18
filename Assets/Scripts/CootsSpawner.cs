@@ -7,7 +7,8 @@ namespace SadBrains
     {
         [SerializeField] private Coots cootsPrefabs;
         [SerializeField] private float spawnRate;
-        [SerializeField] private int correctCootsChance;
+        [SerializeField] private Transform spawnLocation;
+        [SerializeField] private CootsType cootsToSpawn;
         
         private void Start()
         {
@@ -19,12 +20,8 @@ namespace SadBrains
             while (true)
             {
                 var newCoots = Instantiate(cootsPrefabs, transform);
-                newCoots.transform.localPosition = new Vector3();
-                var chance = Random.Range(1, 101);
-                if (chance <= correctCootsChance)
-                {
-                    newCoots.SetCorrect();
-                }
+                newCoots.transform.position = spawnLocation.position;
+                newCoots.SetType(cootsToSpawn);
                 
                 yield return new WaitForSeconds(spawnRate);
             }
