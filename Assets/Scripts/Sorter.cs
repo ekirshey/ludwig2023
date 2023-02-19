@@ -11,6 +11,7 @@ namespace SadBrains
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private ConveyorBelt topConveyor;
         [SerializeField] private ConveyorBelt bottomConveyor;
+        [SerializeField] private bool isTopSort;
         
         private CootsType _allowedCootsType;
         
@@ -35,19 +36,27 @@ namespace SadBrains
 
         private void OnCootsOnTop(Coots coots)
         {
-            if (coots.CootsType != _allowedCootsType)
+            coots.ResetPosition();
+            if (coots.CootsType == _allowedCootsType)
             {
-                coots.transform.position = bottomSort.Center;
-                coots.ResetPosition();
+                coots.transform.position = isTopSort ? topSort.Center : bottomSort.Center;
+            }
+            else
+            {
+                coots.transform.position = isTopSort ? bottomSort.Center : topSort.Center;
             }
         }
         
         private void OnCootsOnBottom(Coots coots)
         {
+            coots.ResetPosition();
             if (coots.CootsType == _allowedCootsType)
             {
-                coots.transform.position = topSort.Center;
-                coots.ResetPosition();
+                coots.transform.position = isTopSort ? topSort.Center : bottomSort.Center;
+            }
+            else
+            {
+                coots.transform.position = isTopSort ? bottomSort.Center : topSort.Center;
             }
         }
         

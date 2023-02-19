@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8963647814397716229}
   - component: {fileID: 8963647814397716234}
   m_Layer: 0
-  m_Name: sorter
+  m_Name: TopSorter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2, y: 6}
+  m_DrawMode: 2
+  m_Size: {x: 2, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -109,6 +109,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8963647814397716228}
   topConveyor: {fileID: 3438679432416630024}
   bottomConveyor: {fileID: 3438679433500360685}
+  isTopSort: 1
 --- !u!61 &8963647814397716234
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,18 +142,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1, y: -3}
+  m_Offset: {x: 1.0145525, y: -4.009069}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0, y: 3, z: 0, w: 2}
     pivot: {x: 0, y: 1}
     oldSize: {x: 2, y: 6}
-    newSize: {x: 2, y: 6}
+    newSize: {x: 2, y: 8}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 6}
+  m_Size: {x: 1.9126852, y: 7.8964796}
   m_EdgeRadius: 0
 --- !u!1 &8963647814836019588
 GameObject:
@@ -180,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8963647814836019588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -4.907, z: 0}
+  m_LocalPosition: {x: 1, y: -6.998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -271,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8963647815350459271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.097, y: -0.823, z: 0}
+  m_LocalPosition: {x: 1.097, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -588,7 +589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632848, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632848, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_LocalPosition.z

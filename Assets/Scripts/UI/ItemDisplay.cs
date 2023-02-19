@@ -36,9 +36,10 @@ namespace SadBrains.UI
 
         private void OnDelete(Placeable placeable)
         {
+            placeable.gameObject.SetActive(false);
+            // TODO this check doesnt seem to work?
             if (placeable == _currentItem)
             {
-                placeable.gameObject.SetActive(false);
                 _items.Push(placeable);
             }
         }
