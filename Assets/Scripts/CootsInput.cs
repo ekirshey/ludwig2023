@@ -1,13 +1,17 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SadBrains
 {
-    public class DeliveryTube : MonoBehaviour
+    public class CootsInput : MonoBehaviour
     {
-        [SerializeField] private CootsType cootsType;
+        [SerializeField] private Image typeImage;
+        
         public static event Action DeliveredBadCoots;
         public static event Action DeliveredGoodCoots;
+        
+        private CootsType _expectedCootsType;
         
         private void OnTriggerEnter2D(Collider2D col)
         {
@@ -15,7 +19,7 @@ namespace SadBrains
             if (coots == null) return;
             
             
-            if (coots.CootsType != cootsType)
+            if (coots.CootsType != _expectedCootsType)
             {
                 DeliveredBadCoots?.Invoke();
             }
@@ -26,5 +30,10 @@ namespace SadBrains
             Destroy(coots.gameObject);
         }
 
+        public void SetCootsType(CootsType cootsType)
+        {
+            _expectedCootsType = cootsType;
+            typeImage.sprite = cootsType.sprite;
+        }
     }
 }

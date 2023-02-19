@@ -52,13 +52,13 @@ namespace SadBrains
             SetSpeed();
         }
         
-        protected override void DisableCollision()
+        public override void DisableCollision()
         {
             base.DisableCollision();
             spriteRenderer.DOFade(0.5f, 0.1f);
         }
 
-        protected override void EnableCollision()
+        public override void EnableCollision()
         {
             base.EnableCollision();
             spriteRenderer.DOFade(1.0f, 0.1f);

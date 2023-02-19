@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SadBrains.Utils;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -22,7 +23,26 @@ namespace SadBrains.UI
                 _items.Push(device);
             }    
         }
-        
+
+        private void OnEnable()
+        {
+            Trash.DeletePlaceable += OnDelete;
+        }
+
+        private void OnDisable()
+        {
+            Trash.DeletePlaceable -= OnDelete;
+        }
+
+        private void OnDelete(Placeable placeable)
+        {
+            if (placeable == _currentItem)
+            {
+                placeable.gameObject.SetActive(false);
+                _items.Push(placeable);
+            }
+        }
+
         public void OnBeginDrag(PointerEventData eventData)
         {
             _currentItem = _items.Pop();

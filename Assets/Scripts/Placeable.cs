@@ -6,8 +6,11 @@ namespace SadBrains
 {
     public abstract class Placeable : MonoBehaviour
     {
+        public static event Action<Placeable> DragStart;
+        public static event Action<Placeable> DragEnd;
+
         public event Action MoveStart;
-        
+
         protected BoxCollider2D Collider2D { get; set; }
 
         public bool IsMoving { get; private set; }
@@ -19,17 +22,7 @@ namespace SadBrains
         {
             Collider2D = GetComponent<BoxCollider2D>();
         }
-        
-        protected virtual void DisableCollision()
-        {
-            Collider2D.enabled = false;
-        }
 
-        protected virtual void EnableCollision()
-        {
-            Collider2D.enabled = true;
-        }
-        
         private void OnMouseDown()
         {
             var position = gameObject.transform.position;
@@ -59,7 +52,8 @@ namespace SadBrains
         {
             if (IsMoving) return;
             IsMoving = true;
-            MoveStart?.Invoke();
+            MoveStart?.Invoke(); //temp
+            DragStart?.Invoke(this);
             DisableCollision();
         }
 
@@ -68,10 +62,21 @@ namespace SadBrains
             if (IsMoving)
             {
                 IsMoving = false;
+                DragEnd?.Invoke(this);
                 EnableCollision();
             }
         }
         
         public abstract bool Place();
+        
+        public virtual void DisableCollision()
+        {
+            Collider2D.enabled = false;
+        }
+
+        public virtual void EnableCollision()
+        {
+            Collider2D.enabled = true;
+        }
     }
 }

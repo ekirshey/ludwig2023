@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 namespace SadBrains
 {
@@ -7,9 +8,11 @@ namespace SadBrains
         [SerializeField] private CootsTrigger topSort;
         [SerializeField] private CootsTrigger bottomSort;
         [SerializeField] private SorterTypeSelect typeSelect;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private ConveyorBelt topConveyor;
+        [SerializeField] private ConveyorBelt bottomConveyor;
         
         private CootsType _allowedCootsType;
-        
         
         private void OnEnable()
         {
@@ -46,6 +49,22 @@ namespace SadBrains
                 coots.transform.position = topSort.Center;
                 coots.ResetPosition();
             }
+        }
+        
+        public override void DisableCollision()
+        {
+            base.DisableCollision();
+            topConveyor.DisableCollision();
+            bottomConveyor.DisableCollision();
+            spriteRenderer.DOFade(0.5f, 0.1f);
+        }
+
+        public override void EnableCollision()
+        {
+            base.EnableCollision();
+            topConveyor.EnableCollision();
+            bottomConveyor.EnableCollision();
+            spriteRenderer.DOFade(1.0f, 0.1f);
         }
 
         public override bool CanReceiveSignal(DeviceSignal signal)

@@ -39,17 +39,17 @@ namespace SadBrains
         {
             if (_device != null)
             {
-                _device.MoveStart -= OnDeviceMove;
+                _device.MoveStart -= OnDeviceDrag;
             }
             
             _device = device;
             _stateValue = _device.GetCurrentSignalState(signalType);
             iconRenderer.sprite = _stateValue == 0 ? stateOne : stateTwo;
             _deviceLastLocation = _device.transform.position;
-            _device.MoveStart += OnDeviceMove;
+            _device.MoveStart += OnDeviceDrag;
         }
         
-        private void OnDeviceMove()
+        private void OnDeviceDrag()
         {
             StartCoroutine(FollowDevice());
         }
@@ -70,13 +70,13 @@ namespace SadBrains
             EndMove();
         }
         
-        protected override void DisableCollision()
+        public override void DisableCollision()
         {
             base.DisableCollision();
             iconRenderer.DOFade(0.5f, 0.1f);
         }
 
-        protected override void EnableCollision()
+        public override void EnableCollision()
         {
             base.EnableCollision();
             iconRenderer.DOFade(1.0f, 0.1f);
