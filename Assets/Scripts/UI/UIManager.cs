@@ -11,14 +11,12 @@ namespace SadBrains.UI
 
         private void OnEnable()
         {
-            GameManager.UpdateDelivered += OnUpdateDelivered;
-            GameManager.UpdateLives += OnUpdateLives;
+
         }
 
         private void OnDisable()
         {
-            GameManager.UpdateDelivered -= OnUpdateDelivered;
-            GameManager.UpdateLives -= OnUpdateLives;
+
         }
 
         private void Start()

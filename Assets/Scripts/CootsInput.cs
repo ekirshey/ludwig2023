@@ -8,24 +8,23 @@ namespace SadBrains
     {
         [SerializeField] private Image typeImage;
         
-        public static event Action DeliveredBadCoots;
-        public static event Action DeliveredGoodCoots;
+        public static event Action<CootsType, CootsType> DeliveredBadCoots;
+        public static event Action<CootsType> DeliveredGoodCoots;
         
         private CootsType _expectedCootsType;
-        
+
         private void OnTriggerEnter2D(Collider2D col)
         {
             var coots = col.GetComponent<Coots>();
             if (coots == null) return;
-            
-            
+
             if (coots.CootsType != _expectedCootsType)
             {
-                DeliveredBadCoots?.Invoke();
+                DeliveredBadCoots?.Invoke(coots.CootsType, _expectedCootsType);
             }
             else
             {
-                DeliveredGoodCoots?.Invoke();
+                DeliveredGoodCoots?.Invoke(_expectedCootsType);
             }
             Destroy(coots.gameObject);
         }
