@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2290412975026087164}
   - component: {fileID: 2290412975026087165}
   - component: {fileID: 2290412975026087162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BottomTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2290412975291874084}
   - component: {fileID: 2290412975291874087}
   - component: {fileID: 2290412975291874086}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 2290412975633919271}
   - component: {fileID: 2290412975633919268}
   - component: {fileID: 2290412975633919269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TopTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 2290412975780968477}
   - component: {fileID: 2290412975780968479}
   - component: {fileID: 2290412975780968476}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AntiGrav_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,6 +404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef9270c0a2842d7907697c0f376337a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
   top: {fileID: 2290412975633919269}
   bottom: {fileID: 2290412975026087162}
 --- !u!1 &2290412976262566034
@@ -417,7 +420,7 @@ GameObject:
   - component: {fileID: 2290412976262566037}
   - component: {fileID: 2290412976262566036}
   - component: {fileID: 2290412976262566039}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}

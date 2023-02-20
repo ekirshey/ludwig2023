@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 409193705501009865}
   - component: {fileID: 5437542924708389316}
   - component: {fileID: 6043235363881632851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Belt_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,6 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6966610fd36c6d540ad7d0c95303751f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
   spriteRenderer: {fileID: 6043235365557528414}
   baseSpeed: 5
   speedMods:
@@ -126,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6043235365557528415}
   - component: {fileID: 6043235365557528414}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

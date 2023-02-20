@@ -165,7 +165,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -33.429993, y: 502.82}
+  m_AnchoredPosition: {x: -33.42993, y: 502.82007}
   m_SizeDelta: {x: -1037.95, y: -1011.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &30784283
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 546555973}
   - component: {fileID: 546555972}
   m_Layer: 5
-  m_Name: Conveyor_10
+  m_Name: Conveyor_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1143,16 +1143,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ac9652bb37b4e6743a60d9a312456191, type: 2}
   - {fileID: 11400000, guid: 96a3e56728557fc49849d4fa6f31d265, type: 2}
   - {fileID: 11400000, guid: 21c3fc7ad30ccc649b0d0ce273bcb56f, type: 2}
+  - {fileID: 11400000, guid: 46287ae5a650eca45a400b85e13e43d2, type: 2}
   leftIOLocations:
   - {x: -20, y: 9, z: 0}
-  - {x: -20, y: 4, z: 0}
-  - {x: -20, y: -1, z: 0}
-  - {x: -20, y: -6, z: 0}
+  - {x: -20, y: 5, z: 0}
+  - {x: -20, y: 1, z: 0}
+  - {x: -20, y: -3, z: 0}
+  - {x: -20, y: -7, z: 0}
   rightIOLocations:
   - {x: 16, y: 9, z: 0}
-  - {x: 16, y: 4, z: 0}
-  - {x: 16, y: -1, z: 0}
-  - {x: 16, y: -6, z: 0}
+  - {x: 16, y: 5, z: 0}
+  - {x: 16, y: 1, z: 0}
+  - {x: 16, y: -3, z: 0}
+  - {x: 16, y: -7, z: 0}
   outputPrefab: {fileID: 4971522926039977462, guid: 29b8f7b66987b744891a19ed8b04d381, type: 3}
   inputPrefab: {fileID: 4763986976500676415, guid: 8bdbb86a8090ce042af6162c6e0ad4e9, type: 3}
   ioSpawnRate: 30
@@ -1857,7 +1860,7 @@ GameObject:
   - component: {fileID: 1746244589}
   - component: {fileID: 1746244591}
   m_Layer: 5
-  m_Name: Conveyor_5
+  m_Name: Conveyor_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1934,7 +1937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8b53cb46e44af1b13d4925df604dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 6043235363881632851, guid: cedac7834ef631d49bdad35b6b293c33, type: 3}
+  itemPrefab: {fileID: 6043235363881632851, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
   count: 100
 --- !u!1 &1868172150
 GameObject:

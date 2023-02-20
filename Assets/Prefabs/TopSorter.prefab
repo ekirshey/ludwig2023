@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8963647814397716228}
   - component: {fileID: 8963647814397716229}
   - component: {fileID: 8963647814397716234}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TopSorter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 2, y: 8}
+  m_Size: {x: 2, y: 7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,6 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e481c77e95054bf1b7bd29ee0183703f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
   topSort: {fileID: 8963647815528660758}
   bottomSort: {fileID: 8963647814836019595}
   typeSelect: {fileID: 8963647815350459275}
@@ -142,18 +145,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.0145525, y: -4.009069}
+  m_Offset: {x: 0.99418694, y: -3.5004907}
   m_SpriteTilingProperty:
     border: {x: 0, y: 3, z: 0, w: 2}
     pivot: {x: 0, y: 1}
     oldSize: {x: 2, y: 6}
-    newSize: {x: 2, y: 8}
+    newSize: {x: 2, y: 7}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9126852, y: 7.8964796}
+  m_Size: {x: 3.7120442, y: 6.879323}
   m_EdgeRadius: 0
 --- !u!1 &8963647814836019588
 GameObject:
@@ -166,7 +169,7 @@ GameObject:
   - component: {fileID: 8963647814836019593}
   - component: {fileID: 8963647814836019595}
   - component: {fileID: 8963647814836019594}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: BottomSort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8963647814836019588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -6.998, z: 0}
+  m_LocalPosition: {x: 1, y: -5.998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -257,7 +260,7 @@ GameObject:
   - component: {fileID: 8963647815350459269}
   - component: {fileID: 8963647815350459268}
   - component: {fileID: 8963647815350459275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SortType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +402,7 @@ GameObject:
   - component: {fileID: 8963647815528660752}
   - component: {fileID: 8963647815528660758}
   - component: {fileID: 8963647815528660759}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: TopSort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632850, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632851, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: dragDisabled
@@ -544,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043235365557528409, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6043235365557528415, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -589,7 +592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632848, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632848, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -629,7 +632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632850, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632851, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: dragDisabled
@@ -637,7 +640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043235365557528409, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

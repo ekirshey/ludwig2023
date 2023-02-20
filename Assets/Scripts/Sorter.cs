@@ -76,19 +76,5 @@ namespace SadBrains
             spriteRenderer.DOFade(1.0f, 0.1f);
         }
 
-        public override bool CanReceiveSignal(DeviceSignal signal)
-        {
-            return false;
-        }
-
-        public override void ReceiveSignal(DeviceSignal signal)
-        {
-            
-        }
-
-        public override int GetCurrentSignalState(DeviceSignal signal)
-        {
-            return 0;
-        }
     }
 }

@@ -63,25 +63,7 @@ namespace SadBrains
             base.EnableCollision();
             spriteRenderer.DOFade(1.0f, 0.1f);
         }
-
-        public override bool CanReceiveSignal(DeviceSignal signal)
-        {
-            if (signal == DeviceSignal.Direction) return true;
-            return false;
-        }
         
-        public override void ReceiveSignal(DeviceSignal signal)
-        {
-            if (signal != DeviceSignal.Direction) return;
-            FlipDirection();
-        }
-
-        public override int GetCurrentSignalState(DeviceSignal signal)
-        {
-            if (signal != DeviceSignal.Direction) return 0;
-
-            return _direction == 1 ? 0 : 1;
-        }
         
     }
 }

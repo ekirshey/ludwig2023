@@ -35,20 +35,6 @@ namespace SadBrains
                 .AppendCallback(coots.EnableRigidBody).Play();
             
         }
-        
-        public override bool CanReceiveSignal(DeviceSignal signal)
-        {
-            return true;
-        }
 
-        public override void ReceiveSignal(DeviceSignal signal)
-        {
-            
-        }
-
-        public override int GetCurrentSignalState(DeviceSignal signal)
-        {
-            return 0;
-        }
     }
 }
