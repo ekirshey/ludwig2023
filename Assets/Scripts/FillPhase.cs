@@ -9,24 +9,12 @@ namespace SadBrains
         [SerializeField] private CootsOutput outputPrefab;
         [SerializeField] private CootsInput inputPrefab;
         [SerializeField] private float ioSpawnRate;
+        [SerializeField] private int happinessToContinue;
         
         private void CreateIO()
         {
-            var side = Random.Range(0, 2);
-
-            Vector3 outputLoc;
-            Vector3 inputLoc;
-            side = 0;
-            if (side == 0)
-            {
-                outputLoc = AvailableLeftIOSpawns.PopRandomElement();
-                inputLoc = AvailableRightIOSpawns.PopRandomElement();
-            }
-            else
-            {
-                outputLoc = AvailableRightIOSpawns.PopRandomElement();
-                inputLoc = AvailableLeftIOSpawns.PopRandomElement();
-            }
+            var outputLoc = AvailableLeftIOSpawns.PopRandomElement();
+            var inputLoc = AvailableRightIOSpawns.PopRandomElement();
 
             var cootsType = AvailableCootsTypes.PopRandomElement();
             var output = Instantiate(outputPrefab, GameManager.Instance.transform);
@@ -36,6 +24,8 @@ namespace SadBrains
             var input = Instantiate(inputPrefab, GameManager.Instance.transform);
             input.transform.position = inputLoc;
             input.SetCootsType(cootsType);
+            
+            GameManager.Instance.AddIO(output, input);
         }
         
         private IEnumerator IOTimer()
@@ -45,24 +35,20 @@ namespace SadBrains
                 CreateIO();
                 yield return new WaitForSeconds(ioSpawnRate);
             }
+            
+            // After all io is spawned, set the alert to meet
+            catGpt.AddHappinessAlert(Finish, happinessToContinue);
         }
         
         public override void SetActive()
         {
             base.SetActive();
-         
+            
             StartCoroutine(IOTimer());
         }
 
-        public override void OnDeliveredBadCoots(CootsType received, CootsType expected)
-        {
-            
-        }
-        
-        public override void OnDeliveredGoodCoots(CootsType type)
-        {
-            
-        }
+
+
 
 
     }

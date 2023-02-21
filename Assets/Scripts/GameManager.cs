@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace SadBrains
         public List<CootsType> CootsTypes => cootsTypes;
         public List<Vector3> LeftIOLocations => leftIOLocations;
         public List<Vector3> RightIOLocations => rightIOLocations;
+        public List<Tuple<CootsOutput, CootsInput>> IoPair { get; private set; }
         
         private List<Phase> _gamePhases;
         private int _currentPhaseIdx;
@@ -35,6 +37,7 @@ namespace SadBrains
             
             DontDestroyOnLoad(gameObject);
 
+            IoPair = new List<Tuple<CootsOutput, CootsInput>>();
             _gamePhases = gameObject.GetComponentsInChildren<Phase>().ToList();
         }
 
@@ -47,32 +50,23 @@ namespace SadBrains
         private void OnPhaseFinished()
         {
             _gamePhases[_currentPhaseIdx].PhaseFinished -= OnPhaseFinished;
+            
             _currentPhaseIdx++;
+            
             _gamePhases[_currentPhaseIdx].SetActive();
+            _gamePhases[_currentPhaseIdx].PhaseFinished += OnPhaseFinished;
         }
-
-        private void OnEnable()
+        
+        public void AddIO(CootsOutput output, CootsInput input)
         {
-            CootsInput.DeliveredBadCoots += OnDeliveredBadCoots;
-            CootsInput.DeliveredGoodCoots += OnDeliveredGoodCoots;
+            IoPair.Add(new Tuple<CootsOutput, CootsInput>(output, input));
         }
-
-        private void OnDisable()
+        
+        public void RemoveIO(Tuple<CootsOutput, CootsInput> io)
         {
-            CootsInput.DeliveredBadCoots -= OnDeliveredBadCoots;
-            CootsInput.DeliveredGoodCoots -= OnDeliveredGoodCoots;
+            IoPair.Remove(io);
         }
-
-        private void OnDeliveredBadCoots(CootsType received, CootsType expected)
-        {
-            _gamePhases[_currentPhaseIdx].OnDeliveredBadCoots(received, expected);
-        }
-
-        private void OnDeliveredGoodCoots(CootsType type)
-        {
-            _gamePhases[_currentPhaseIdx].OnDeliveredGoodCoots(type);
-        }
-
+        
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
@@ -80,18 +74,18 @@ namespace SadBrains
             {
                 var center = io;
                 center.x += 2f;
-                center.y -= 1.5f;
+                center.y -= 2f;
                 
-                Gizmos.DrawWireCube(center, new Vector3(4,3,0));
+                Gizmos.DrawWireCube(center, new Vector3(4,4,0));
             }
             
             foreach (var io in rightIOLocations)
             {
                 var center = io;
                 center.x += 2f;
-                center.y -= 1.5f;
+                center.y -= 2f;
                 
-                Gizmos.DrawWireCube(center, new Vector3(4,3,0));
+                Gizmos.DrawWireCube(center, new Vector3(4,4,0));
             }
         }
     }

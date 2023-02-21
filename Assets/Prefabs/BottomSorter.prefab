@@ -539,7 +539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632850, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632851, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: dragDisabled
@@ -547,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043235365557528409, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6043235365557528415, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -632,7 +632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632850, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6043235363881632851, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: dragDisabled
@@ -640,7 +640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043235365557528409, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

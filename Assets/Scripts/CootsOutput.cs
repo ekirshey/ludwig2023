@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,10 +14,12 @@ namespace SadBrains
         [SerializeField] private TMP_Text countdownText;
         [SerializeField] private Image typeImage;
         [SerializeField] private Button skipButton;
-
-        private CootsType _cootsToSpawn;
-        private bool _skip;
+        [SerializeField] private Animator animator;
         
+        public CootsType CootsType { get; private set; }
+        private bool _skip;
+        private static readonly int OutputCoots = Animator.StringToHash("OutputCoots");
+
         private void Start()
         {
             countdownText.text = defaultWaitTime.ToString();
@@ -58,9 +58,10 @@ namespace SadBrains
         {
             while (true)
             {
+                animator.SetTrigger(OutputCoots);
                 var newCoots = Instantiate(cootsPrefabs, transform);
                 newCoots.transform.position = spawnLocation.position;
-                newCoots.SetType(_cootsToSpawn);
+                newCoots.SetType(CootsType);
                 
                 yield return new WaitForSeconds(spawnRate);
             }
@@ -68,7 +69,7 @@ namespace SadBrains
 
         public void SetCootsType(CootsType cootsType)
         {
-            _cootsToSpawn = cootsType;
+            CootsType = cootsType;
             typeImage.sprite = cootsType.sprite;
         }
     }

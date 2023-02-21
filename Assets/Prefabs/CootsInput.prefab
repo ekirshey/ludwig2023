@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 1d68a634d7c0b6245b748afa85edeead, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebd346fc34c9d9543bc1a47747076409, type: 3}
   m_Color: {r: 1, g: 0.39937478, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -236,8 +236,8 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -796053717
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &6804333174176868130
 MonoBehaviour:
@@ -314,7 +314,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: -1.5}
+  m_AnchoredPosition: {x: 2.1, y: -2.23}
   m_SizeDelta: {x: 1, y: 1.6667}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4540479197836063819

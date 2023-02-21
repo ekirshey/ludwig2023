@@ -1,19 +1,35 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace SadBrains
 {
     public class Coots : MonoBehaviour
     {
+        public static event Action CootsDestroyed;
+        
         [SerializeField] private SpriteRenderer spriteRenderer;
         public CootsType CootsType { get; private set; }
 
         private Rigidbody2D _rigidbody2D;
+        private Camera _camera;
 
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            _camera = Camera.main;
         }
         
+        private void Update()
+        {
+            var screenPos = _camera.WorldToScreenPoint(transform.position);
+            var onScreen = screenPos.x > 0f && screenPos.x < Screen.width && screenPos.y > 0f && screenPos.y < Screen.height;
+            if (!onScreen)
+            {
+                CootsDestroyed?.Invoke();
+                Destroy(gameObject);
+            }
+        }
+
         public void SetType(CootsType type)
         {
             CootsType = type;

@@ -14,7 +14,7 @@ namespace SadBrains
     
         public float SpeedMod => speedMods[_currentModIdx];
         
-        private List<SurfaceEffector2D> _surfaceEffectors;
+        private SurfaceEffector2D _surfaceEffector;
         private float _currentSpeed;
         private int _currentModIdx;
         private int _direction;
@@ -22,15 +22,12 @@ namespace SadBrains
         private void SetSpeed()
         {
             _currentSpeed = baseSpeed * SpeedMod * _direction;
-            foreach (var surfaceEffector in _surfaceEffectors)
-            {
-                surfaceEffector.speed = _currentSpeed;
-            }
+            _surfaceEffector.speed = _currentSpeed;
         }
         
         private void Start()
         {
-            _surfaceEffectors = GetComponentsInChildren<SurfaceEffector2D>().ToList();
+            _surfaceEffector = GetComponent<SurfaceEffector2D>();
             _currentModIdx = 0;
             _direction = 1;
             SetSpeed();
@@ -63,7 +60,18 @@ namespace SadBrains
             base.EnableCollision();
             spriteRenderer.DOFade(1.0f, 0.1f);
         }
-        
-        
+
+
+        protected override void OnDisableDevice()
+        {
+            DisableCollision();
+            _surfaceEffector.speed = 0f;
+        }
+
+        protected override void OnEnableDevice()
+        {
+            EnableCollision();
+            SetSpeed();
+        }
     }
 }

@@ -19,7 +19,17 @@ namespace SadBrains
             top.CootsEntered -= OnCootsOnTop;
             bottom.CootsEntered -= OnCootsOnBottom;
         }
-        
+
+        protected override void OnDisableDevice()
+        {
+            
+        }
+
+        protected override void OnEnableDevice()
+        {
+            
+        }
+
         private void OnCootsOnTop(Coots coots)
         {
 

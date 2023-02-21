@@ -6,15 +6,24 @@ namespace SadBrains
 {
     public abstract class Phase : MonoBehaviour
     {
-        public event Action PhaseFinished;
+        [SerializeField] protected CatGPT catGpt;
         
+        public event Action PhaseFinished;
+        public static event Action DevicesDisabled;
+        public static event Action DevicesEnabled;
+
         protected List<CootsType> AvailableCootsTypes;
         protected List<Vector3> AvailableLeftIOSpawns;
         protected List<Vector3> AvailableRightIOSpawns;
         protected Dictionary<CootsType, int> DeliveredCoots;
         
         protected bool Active { get; set; }
-        
+
+        private void OnDisable()
+        {
+
+        }
+
         public virtual void SetActive()
         {
             Active = true;
@@ -36,8 +45,24 @@ namespace SadBrains
             AvailableRightIOSpawns.AddRange(GameManager.Instance.RightIOLocations);
         }
 
-        public abstract void OnDeliveredBadCoots(CootsType received, CootsType expected);
-        public abstract void OnDeliveredGoodCoots(CootsType type);
+        protected virtual void OnTimerFinished()
+        {
+            
+        }
 
+        protected void Finish()
+        {
+            PhaseFinished?.Invoke();
+        }
+
+        protected void DisableDevices()
+        {
+            DevicesDisabled?.Invoke();
+        }
+        
+        protected void EnableDevices()
+        {
+            DevicesEnabled?.Invoke();
+        }
     }
 }

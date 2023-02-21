@@ -28,7 +28,7 @@ namespace SadBrains
             topSort.CootsEntered -= OnCootsOnTop;
             bottomSort.CootsEntered -= OnCootsOnBottom;
         }
-
+        
         private void OnCootsTypeChanged(CootsType type)
         {
             _allowedCootsType = type;
@@ -76,5 +76,14 @@ namespace SadBrains
             spriteRenderer.DOFade(1.0f, 0.1f);
         }
 
+        protected override void OnDisableDevice()
+        {
+            DisableCollision();
+        }
+
+        protected override void OnEnableDevice()
+        {
+            EnableCollision();
+        }
     }
 }

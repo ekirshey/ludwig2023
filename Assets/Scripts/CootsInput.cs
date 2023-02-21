@@ -11,27 +11,27 @@ namespace SadBrains
         public static event Action<CootsType, CootsType> DeliveredBadCoots;
         public static event Action<CootsType> DeliveredGoodCoots;
         
-        private CootsType _expectedCootsType;
+        public CootsType ExpectedCootsType { get; private set; }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
             var coots = col.GetComponent<Coots>();
             if (coots == null) return;
 
-            if (coots.CootsType != _expectedCootsType)
+            if (coots.CootsType != ExpectedCootsType)
             {
-                DeliveredBadCoots?.Invoke(coots.CootsType, _expectedCootsType);
+                DeliveredBadCoots?.Invoke(coots.CootsType, ExpectedCootsType);
             }
             else
             {
-                DeliveredGoodCoots?.Invoke(_expectedCootsType);
+                DeliveredGoodCoots?.Invoke(ExpectedCootsType);
             }
             Destroy(coots.gameObject);
         }
 
         public void SetCootsType(CootsType cootsType)
         {
-            _expectedCootsType = cootsType;
+            ExpectedCootsType = cootsType;
             typeImage.sprite = cootsType.sprite;
         }
     }
