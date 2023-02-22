@@ -82,6 +82,7 @@ namespace SadBrains
             Happiness -= deduction;
             if (Happiness <= 0)
             {
+                Happiness = 0;
                 GameLost?.Invoke();
             }
         }
