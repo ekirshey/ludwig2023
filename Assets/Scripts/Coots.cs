@@ -36,9 +36,10 @@ namespace SadBrains
             spriteRenderer.sprite = type.sprite;
         }
 
-        public void ResetPosition()
+        public void ResetVelocity()
         {
-            transform.rotation = Quaternion.identity;
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            _rigidbody2D.angularVelocity = 0.0f;
             _rigidbody2D.velocity = new Vector2();
         }
 

@@ -718,7 +718,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catGpt: {fileID: 18918776}
-  inputPrefab: {fileID: 4763986976500676415, guid: 8bdbb86a8090ce042af6162c6e0ad4e9, type: 3}
   ioSpawnRate: 0
   happinessToContinue: 75
 --- !u!1 &175809036
