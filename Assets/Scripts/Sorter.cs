@@ -75,15 +75,5 @@ namespace SadBrains
             bottomConveyor.EnableCollision();
             spriteRenderer.DOFade(1.0f, 0.1f);
         }
-
-        protected override void OnDisableDevice()
-        {
-            DisableCollision();
-        }
-
-        protected override void OnEnableDevice()
-        {
-            EnableCollision();
-        }
     }
 }

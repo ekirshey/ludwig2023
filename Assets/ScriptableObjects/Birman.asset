@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Birman
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: a0ed446f6ce91fd409d5c4395b5b887d, type: 3}
+  output: {fileID: 4971522926039977462, guid: e0acdf08396b62e4da21108055bfa745, type: 3}
+  input: {fileID: 4763986976500676415, guid: 8bdbb86a8090ce042af6162c6e0ad4e9, type: 3}

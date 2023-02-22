@@ -9,8 +9,8 @@ namespace SadBrains
         [SerializeField] protected CatGPT catGpt;
         
         public event Action PhaseFinished;
-        public static event Action DevicesDisabled;
-        public static event Action DevicesEnabled;
+        public static event Action Pause;
+        public static event Action Resume;
 
         protected List<CootsType> AvailableCootsTypes;
         protected List<Vector3> AvailableLeftIOSpawns;
@@ -18,11 +18,6 @@ namespace SadBrains
         protected Dictionary<CootsType, int> DeliveredCoots;
         
         protected bool Active { get; set; }
-
-        private void OnDisable()
-        {
-
-        }
 
         public virtual void SetActive()
         {
@@ -44,25 +39,20 @@ namespace SadBrains
             AvailableRightIOSpawns = new List<Vector3>();
             AvailableRightIOSpawns.AddRange(GameManager.Instance.RightIOLocations);
         }
-
-        protected virtual void OnTimerFinished()
-        {
-            
-        }
-
+        
         protected void Finish()
         {
             PhaseFinished?.Invoke();
         }
 
-        protected void DisableDevices()
+        protected void PauseAll()
         {
-            DevicesDisabled?.Invoke();
+            Pause?.Invoke();
         }
         
-        protected void EnableDevices()
+        protected void EnableAll()
         {
-            DevicesEnabled?.Invoke();
+            Resume?.Invoke();
         }
     }
 }

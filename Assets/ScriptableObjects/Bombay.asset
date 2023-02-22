@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Bombay
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 6c4932fbe62aebb4088cc2ca9f6fadfa, type: 3}
+  output: {fileID: 4971522926039977462, guid: 6fe58b76ca026754f8ce35bade5bc60f, type: 3}
+  input: {fileID: 4763986976500676415, guid: 93a47ba21bb167d4c8a56944449076b3, type: 3}

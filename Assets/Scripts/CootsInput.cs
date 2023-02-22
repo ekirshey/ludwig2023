@@ -6,8 +6,6 @@ namespace SadBrains
 {
     public class CootsInput : MonoBehaviour
     {
-        [SerializeField] private Image typeImage;
-        
         public static event Action<CootsType, CootsType> DeliveredBadCoots;
         public static event Action<CootsType> DeliveredGoodCoots;
         
@@ -32,7 +30,6 @@ namespace SadBrains
         public void SetCootsType(CootsType cootsType)
         {
             ExpectedCootsType = cootsType;
-            typeImage.sprite = cootsType.sprite;
         }
     }
 }

@@ -6,8 +6,6 @@ namespace SadBrains
 {
     public class FillPhase : Phase
     {
-        [SerializeField] private CootsOutput outputPrefab;
-        [SerializeField] private CootsInput inputPrefab;
         [SerializeField] private float ioSpawnRate;
         [SerializeField] private int happinessToContinue;
         
@@ -17,11 +15,11 @@ namespace SadBrains
             var inputLoc = AvailableRightIOSpawns.PopRandomElement();
 
             var cootsType = AvailableCootsTypes.PopRandomElement();
-            var output = Instantiate(outputPrefab, GameManager.Instance.transform);
+            var output = Instantiate(cootsType.output, GameManager.Instance.transform);
             output.transform.position = outputLoc;
             output.SetCootsType(cootsType);
             
-            var input = Instantiate(inputPrefab, GameManager.Instance.transform);
+            var input = Instantiate(cootsType.input, GameManager.Instance.transform);
             input.transform.position = inputLoc;
             input.SetCootsType(cootsType);
             
@@ -43,7 +41,6 @@ namespace SadBrains
         public override void SetActive()
         {
             base.SetActive();
-            
             StartCoroutine(IOTimer());
         }
 

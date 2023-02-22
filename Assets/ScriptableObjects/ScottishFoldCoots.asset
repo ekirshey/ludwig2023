@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: ScottishFoldCoots
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 95fc3614eb66ad44d9f52e91da5ffaba, type: 3}
+  output: {fileID: 4971522926039977462, guid: 530f419d6241ddf48b86869caca4dea1, type: 3}
+  input: {fileID: 4763986976500676415, guid: 497067259d8459746b83996c496fcbf6, type: 3}

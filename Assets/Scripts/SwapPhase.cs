@@ -9,6 +9,7 @@ namespace SadBrains
 {
     public class SwapPhase : Phase
     {
+        [SerializeField] private Timer timer;
         [SerializeField] private int swapTime;
         [SerializeField] private int numSwaps;
         [SerializeField] private int happinessToContinue;
@@ -23,8 +24,10 @@ namespace SadBrains
 
         private IEnumerator SwapEvent()
         {
-            DisableDevices();
+            PauseAll();
+            // ADD AI COnversation
             yield return new WaitForSeconds(2.0f);
+            catGpt.DeductHappiness(happinessLoss);
 
             var ioList = new List<Tuple<CootsOutput, CootsInput>>();
             ioList.AddRange(GameManager.Instance.IoPair);
@@ -60,14 +63,15 @@ namespace SadBrains
                 yield return sequence.Play().WaitForCompletion();
 
             }
-
-            EnableDevices();
+            
+            timer.TimerFinished += OnTimerFinished;
+            timer.SetTimer(swapTime);
         }
-        
-        
-        protected override void OnTimerFinished()
+
+        private void OnTimerFinished()
         {
-            base.OnTimerFinished();
+            EnableAll();
+            timer.TimerFinished -= OnTimerFinished;
         }
         
         

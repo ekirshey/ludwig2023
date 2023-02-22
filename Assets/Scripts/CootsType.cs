@@ -6,5 +6,7 @@ namespace SadBrains
     public class CootsType : ScriptableObject
     {
         public Sprite sprite;
+        public CootsOutput output;
+        public CootsInput input;
     }
 }

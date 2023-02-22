@@ -18,8 +18,9 @@ namespace SadBrains
         
         public CootsType CootsType { get; private set; }
         private bool _skip;
+        private bool _paused;
         private static readonly int OutputCoots = Animator.StringToHash("OutputCoots");
-
+        
         private void Start()
         {
             countdownText.text = defaultWaitTime.ToString();
@@ -28,14 +29,36 @@ namespace SadBrains
 
         private void OnEnable()
         {
+            Phase.Pause += OnPause;
+            Phase.Resume += OnResume;
             skipButton.onClick.AddListener(OnSkip);
         }
 
         private void OnDisable()
         {
+            Phase.Pause -= OnPause;
+            Phase.Resume -= OnResume;
             skipButton.onClick.RemoveListener(OnSkip);
         }
-        
+
+        private void OnPause()
+        {
+            _paused = true;
+            foreach (Transform child in transform)
+            {
+                var coot = child.GetComponent<Coots>();
+                if (coot != null)
+                {
+                    coot.DisableCollisions();
+                }
+            }
+        }
+
+        private void OnResume()
+        {
+            _paused = false;
+        }
+
         private void OnSkip()
         {
             _skip = true;
@@ -58,11 +81,14 @@ namespace SadBrains
         {
             while (true)
             {
-                animator.SetTrigger(OutputCoots);
-                var newCoots = Instantiate(cootsPrefabs, transform);
-                newCoots.transform.position = spawnLocation.position;
-                newCoots.SetType(CootsType);
-                
+                if (!_paused)
+                {
+                    animator.SetTrigger(OutputCoots);
+                    var newCoots = Instantiate(cootsPrefabs, transform);
+                    newCoots.transform.position = spawnLocation.position;
+                    newCoots.SetType(CootsType);
+                }
+
                 yield return new WaitForSeconds(spawnRate);
             }
         }
