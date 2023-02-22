@@ -1,11 +1,12 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace SadBrains
 {
     public class CootsInput : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer headshot;
+        
         public static event Action<CootsType, CootsType> DeliveredBadCoots;
         public static event Action<CootsType> DeliveredGoodCoots;
         
@@ -30,6 +31,7 @@ namespace SadBrains
         public void SetCootsType(CootsType cootsType)
         {
             ExpectedCootsType = cootsType;
+            headshot.sprite = cootsType.headshot;
         }
     }
 }

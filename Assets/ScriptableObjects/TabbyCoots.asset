@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8bd57fc54646f8b34a943ed9245d7e, type: 3}
   m_Name: TabbyCoots
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: e22c8ec1711dbe44d8b92616bd240e71, type: 3}
+  headshot: {fileID: 1051967524, guid: bea0c65ebd9dcdc419a3a7a4572ea949, type: 3}
+  sprite: {fileID: -580893495, guid: bea0c65ebd9dcdc419a3a7a4572ea949, type: 3}
   output: {fileID: 4971522926039977462, guid: def239c19ae5e9543bcb7c988f22eb3e, type: 3}
   input: {fileID: 4763986976500676415, guid: 2e29bd0a1faae9649bb695acbb7a9aee, type: 3}
