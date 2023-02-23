@@ -15,19 +15,20 @@ namespace SadBrains
         [SerializeField] private float moveThroughTime;
         
         private CootsType _allowedCootsType;
+        private Tween _moveTween;
         
         private void OnEnable()
         {
             typeSelect.CootsTypeChanged += OnCootsTypeChanged;
-            topSort.CootsEntered += OnCootsOnTop;
-            bottomSort.CootsEntered += OnCootsOnBottom;
+            topSort.CootsEntered += MoveCoots;
+            bottomSort.CootsEntered += MoveCoots;
         }
 
         private void OnDisable()
         {
             typeSelect.CootsTypeChanged -= OnCootsTypeChanged;
-            topSort.CootsEntered -= OnCootsOnTop;
-            bottomSort.CootsEntered -= OnCootsOnBottom;
+            topSort.CootsEntered -= MoveCoots;
+            bottomSort.CootsEntered -= MoveCoots;
         }
         
         private void OnCootsTypeChanged(CootsType type)
@@ -35,52 +36,25 @@ namespace SadBrains
             _allowedCootsType = type;
         }
 
-        private void OnCootsOnTop(Coots coots)
+        private void MoveCoots(Coots coots)
         {
-            coots.DisableRigidBody();
+            Vector3 targetPosition;
             coots.ResetVelocity();
-            Tween moveTween;
+            
             if (coots.CootsType == _allowedCootsType)
             {
-                coots.transform.position = isTopSort ? topSort.Center : bottomSort.Center;
-                moveTween = coots.transform.DOMoveX(isTopSort ? topTarget.position.x : bottomTarget.position.x, moveThroughTime);
+                targetPosition = isTopSort ? topSort.Center : bottomSort.Center;
+                targetPosition.x = isTopSort ? topTarget.position.x : bottomTarget.position.x;
             }
             else
             {
-                coots.transform.position = isTopSort ? bottomSort.Center : topSort.Center;
-                moveTween = coots.transform.DOMoveX(isTopSort ? bottomTarget.position.x : topTarget.position.x, moveThroughTime);
+                targetPosition = isTopSort ? bottomSort.Center : topSort.Center;
+                targetPosition.x = isTopSort ? bottomTarget.position.x : topTarget.position.x;
             }
 
-            moveTween.OnComplete(() =>
-            {
-                coots.EnableRigidBody();
-                coots.ResetVelocity();
-            });
+            coots.transform.position = targetPosition;
         }
         
-        private void OnCootsOnBottom(Coots coots)
-        {
-            coots.DisableRigidBody();
-            coots.ResetVelocity();
-            Tween moveTween;
-            
-            if (coots.CootsType == _allowedCootsType)
-            {
-                coots.transform.position = isTopSort ? topSort.Center : bottomSort.Center;
-                moveTween = coots.transform.DOMoveX(isTopSort ? topTarget.position.x : bottomTarget.position.x, moveThroughTime);
-            }
-            else
-            {
-                coots.transform.position = isTopSort ? bottomSort.Center : topSort.Center;
-                moveTween = coots.transform.DOMoveX(isTopSort ? bottomTarget.position.x : topTarget.position.x, moveThroughTime);
-            }
-            
-            moveTween.OnComplete(() =>
-            {
-                coots.EnableRigidBody();
-                coots.ResetVelocity();
-            });
-        }
         
         public override void DisableCollision()
         {

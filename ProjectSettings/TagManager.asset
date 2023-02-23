@@ -44,3 +44,6 @@ TagManager:
   - name: UI
     uniqueID: 182431161
     locked: 0
+  - name: CatGPT
+    uniqueID: 3874598529
+    locked: 0

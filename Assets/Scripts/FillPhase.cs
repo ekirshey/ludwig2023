@@ -1,14 +1,27 @@
 ﻿using System.Collections;
 using SadBrains.Utils;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SadBrains
 {
     public class FillPhase : Phase
     {
-        [SerializeField] private float ioSpawnRate;
+        [SerializeField] private int ioSpawnRate;
         [SerializeField] private int happinessToContinue;
         [SerializeField] private int outputWaitTime;
+        [SerializeField] private GameObject fillPhasePanel;
+        [SerializeField] private Button skip;
+        [SerializeField] private Timer timer;
+
+        private void Awake()
+        {
+            fillPhasePanel.gameObject.SetActive(false);
+            skip.onClick.AddListener(() =>
+            {
+                timer.ExitTimer();
+            });    
+        }
         
         private void CreateIO()
         {
@@ -26,22 +39,29 @@ namespace SadBrains
             
             GameManager.Instance.AddIO(output, input);
         }
+
+        private void FillPhaseFinished()
+        {
+            fillPhasePanel.gameObject.SetActive(false);
+            Finish();
+        }
         
         private IEnumerator IOTimer()
         {
             while (AvailableCootsTypes.Count > 0)
             {
                 CreateIO();
-                yield return new WaitForSeconds(ioSpawnRate);
+                yield return StartCoroutine(timer.RunTimer(ioSpawnRate)); ;
             }
             
             // After all io is spawned, set the alert to meet
-            catGpt.AddHappinessAlert(Finish, happinessToContinue);
+            catGpt.AddHappinessAlert(FillPhaseFinished, happinessToContinue);
         }
         
         public override void SetActive()
         {
             base.SetActive();
+            fillPhasePanel.gameObject.SetActive(true);
             StartCoroutine(IOTimer());
         }
 

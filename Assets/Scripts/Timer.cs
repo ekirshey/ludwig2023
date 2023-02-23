@@ -12,29 +12,34 @@ namespace SadBrains
         [SerializeField] private TMP_Text timerText;
 
         private int _time;
+        private bool _exit;
 
         private void Awake()
         {
             timerText.gameObject.SetActive(false);    
         }
         
-        private IEnumerator RunTimer()
+        public IEnumerator RunTimer(int time)
         {
+            timerText.gameObject.SetActive(true);
+            _time = time;
             var count = 0;
-            while (count < _time)
+            while (count < _time && !_exit)
             {
                 count++;
                 timerText.text = (_time - count).ToString();
                 yield return new WaitForSeconds(1.0f);
             }
+
+            _exit = false;
             timerText.gameObject.SetActive(false);
             TimerFinished?.Invoke();
         }
 
-        public void SetTimer(int time)
+        public void ExitTimer()
         {
-            timerText.gameObject.SetActive(true);
-            _time = time;
+            _exit = true;
         }
+        
     }
 }

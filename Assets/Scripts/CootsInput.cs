@@ -25,7 +25,7 @@ namespace SadBrains
             {
                 DeliveredGoodCoots?.Invoke(ExpectedCootsType);
             }
-            Destroy(coots.gameObject);
+            coots.Destroy();
         }
 
         public void SetCootsType(CootsType cootsType)

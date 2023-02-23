@@ -13,8 +13,11 @@ namespace SadBrains
         [SerializeField] private int swapTime;
         [SerializeField] private int numSwaps;
         [SerializeField] private int happinessToContinue;
-        // AI gets angry and then you have to build up happiness again
         [SerializeField] private int happinessLoss;
+        [SerializeField] private Vector3 catGptStartPosition;
+        [SerializeField] private Vector3 catGptPosition;
+        [SerializeField] private float catGptSpeed;
+        [SerializeField] private List<string> speech;
 
         public override void SetActive()
         {
@@ -22,11 +25,22 @@ namespace SadBrains
             StartCoroutine(SwapEvent());
         }
 
+        private IEnumerator CatGptIntro()
+        {
+            catGpt.transform.position = catGptStartPosition;
+            yield return StartCoroutine(catGpt.MoveToTarget(catGptPosition, catGptSpeed));
+            foreach (var text in speech)
+            {
+                yield return StartCoroutine(catGpt.Speak(text));
+            }
+            yield return StartCoroutine(catGpt.MoveToTarget(catGptStartPosition, catGptSpeed));
+        }
+
         private IEnumerator SwapEvent()
         {
             PauseAll();
             // ADD AI COnversation
-            yield return new WaitForSeconds(2.0f);
+            yield return StartCoroutine(CatGptIntro());
             catGpt.DeductHappiness(happinessLoss);
 
             var ioList = new List<Tuple<CootsOutput, CootsInput>>();
@@ -65,7 +79,7 @@ namespace SadBrains
             }
             
             timer.TimerFinished += OnTimerFinished;
-            timer.SetTimer(swapTime);
+            StartCoroutine(timer.RunTimer(swapTime));
         }
 
         private void OnTimerFinished()

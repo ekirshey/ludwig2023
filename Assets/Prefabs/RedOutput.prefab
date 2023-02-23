@@ -287,6 +287,7 @@ MonoBehaviour:
   countdownText: {fileID: 3231413712509347104}
   skipButton: {fileID: 608737651434864788}
   animator: {fileID: 1327012723112033732}
+  canvas: {fileID: 6951279558227891417}
 --- !u!1 &6164371275126742878
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,5 +501,10 @@ MonoBehaviour:
 --- !u!224 &4539051111469535433 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6182330462114241894, guid: 78322d07c72009840b995055a40a5668, type: 3}
+  m_PrefabInstance: {fileID: 7724234262632631727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &6951279558227891417 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 812365158973512054, guid: 78322d07c72009840b995055a40a5668, type: 3}
   m_PrefabInstance: {fileID: 7724234262632631727}
   m_PrefabAsset: {fileID: 0}

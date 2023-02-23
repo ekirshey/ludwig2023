@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace SadBrains
@@ -13,7 +14,8 @@ namespace SadBrains
         private BoxCollider2D _collider;
         private Rigidbody2D _rigidbody2D;
         private Camera _camera;
-
+        private Tween _moveTween;
+        
         private void Awake()
         {
             _collider = GetComponent<BoxCollider2D>();
@@ -27,7 +29,7 @@ namespace SadBrains
             var onScreen = screenPos.x > 0f && screenPos.x < Screen.width && screenPos.y > 0f && screenPos.y < Screen.height;
             if (onScreen) return;
             CootsDestroyed?.Invoke();
-            Destroy(gameObject);
+            Destroy();
         }
 
         public void SetType(CootsType type)
@@ -42,7 +44,7 @@ namespace SadBrains
             _rigidbody2D.angularVelocity = 0.0f;
             _rigidbody2D.velocity = new Vector2();
         }
-
+        
         public void DisableRigidBody()
         {
             _rigidbody2D.isKinematic = true;
@@ -61,6 +63,13 @@ namespace SadBrains
         public void EnableCollisions()
         {
             _collider.enabled = true;
+        }
+
+
+        public void Destroy()
+        {
+            _moveTween?.Kill();
+            Destroy(gameObject);
         }
     }
 }
