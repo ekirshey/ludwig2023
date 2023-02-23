@@ -10,6 +10,7 @@ namespace SadBrains
         [SerializeField] private List<CootsType> cootsTypes;
         [SerializeField] private List<Vector3> leftIOLocations;
         [SerializeField] private List<Vector3> rightIOLocations;
+        [SerializeField] private List<Rect> disallowedRegions;
         
         public static GameManager Instance { get; private set; }
         
@@ -67,9 +68,23 @@ namespace SadBrains
             IoPair.Remove(io);
         }
         
+        public bool InDisallowedRegion(Vector2 center, Vector2 size)
+        {
+            var objectRect = new Rect(center - size/2, size);
+            foreach (var rect in disallowedRegions)
+            {
+                if (rect.Overlaps(objectRect))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.blue;
             foreach (var io in leftIOLocations)
             {
                 var center = io;
@@ -87,6 +102,14 @@ namespace SadBrains
                 
                 Gizmos.DrawWireCube(center, new Vector3(4,4,0));
             }
+
+            Gizmos.color = Color.red;
+            foreach (var rect in disallowedRegions)
+            {
+                Gizmos.DrawWireCube(rect.center, new Vector3(rect.width, rect.height, 0));
+            }
         }
+
+
     }
 }

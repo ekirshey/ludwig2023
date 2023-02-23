@@ -8,6 +8,7 @@ namespace SadBrains
     {
         [SerializeField] private float ioSpawnRate;
         [SerializeField] private int happinessToContinue;
+        [SerializeField] private int outputWaitTime;
         
         private void CreateIO()
         {
@@ -18,6 +19,7 @@ namespace SadBrains
             var output = Instantiate(cootsType.output, GameManager.Instance.transform);
             output.transform.position = outputLoc;
             output.SetCootsType(cootsType);
+            output.SetWaitTime(outputWaitTime);
             
             var input = Instantiate(cootsType.input, GameManager.Instance.transform);
             input.transform.position = inputLoc;

@@ -406,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4294967295
   top: {fileID: 2290412975633919269}
   bottom: {fileID: 2290412975026087162}
 --- !u!1 &2290412976262566034

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1820647521182250441}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: TopEndTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3900714405946520728}
   - component: {fileID: 6846982057605124458}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: CootsType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 143356955656023221}
   - component: {fileID: 5541763439316007918}
   - component: {fileID: 2524557403292861359}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: SortType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3414579420727592625}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: ButtonUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762260664157377193}
   - component: {fileID: 4546849648723087378}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Sprite Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 265160353293927793}
   - component: {fileID: 5077083897485541586}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Sprite Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,6 +465,83 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
+--- !u!1 &3800019115118954095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 749345461222529219}
+  - component: {fileID: 4450821128407471109}
+  m_Layer: 2
+  m_Name: TopCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &749345461222529219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800019115118954095}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.958, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8963647814397716235}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &4450821128407471109
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800019115118954095}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.0493726, y: -0.533118}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.098745, y: 0.05441332}
+  m_EdgeRadius: 0
 --- !u!1 &5071051055416570491
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +553,7 @@ GameObject:
   - component: {fileID: 90024985338658087}
   - component: {fileID: 8184145809160872867}
   - component: {fileID: 9106428599135465086}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: TopSort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4345359509430096344}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: ButtonDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3315509978606247171}
   - component: {fileID: 6292104086963130701}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: CootsType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +758,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3614930236853299348}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: BottomEndTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522958102183598705}
   - component: {fileID: 528048512766970744}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,7 +890,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8963647814397716230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -822,6 +899,7 @@ Transform:
   - {fileID: 522958102183598705}
   - {fileID: 1820647521182250441}
   - {fileID: 3614930236853299348}
+  - {fileID: 749345461222529219}
   - {fileID: 444028378954771536}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -933,7 +1011,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.9976288, y: -4.2132874}
+  m_Offset: {x: 1.9814289, y: -4.2132874}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 1}
@@ -944,7 +1022,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.8458364, y: 7.417879}
+  m_Size: {x: 3.8782363, y: 7.417879}
   m_EdgeRadius: 0
 --- !u!1 &8963647814836019588
 GameObject:
@@ -957,7 +1035,7 @@ GameObject:
   - component: {fileID: 8963647814836019593}
   - component: {fileID: 8963647814836019595}
   - component: {fileID: 8963647814836019594}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: BottomSort
   m_TagString: Untagged
   m_Icon: {fileID: 0}

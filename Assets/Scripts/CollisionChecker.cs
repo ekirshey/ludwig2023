@@ -11,13 +11,14 @@ namespace SadBrains
         {
             var contactFilter = new ContactFilter2D
             {
-                useLayerMask = true
+                useLayerMask = true,
+                useTriggers = true
             };
             contactFilter.SetLayerMask(layerMask);
             
             var numCollisions = Physics2D.OverlapBox(center, size, 0.0f,
                 contactFilter, _hitColliders);
-
+            Debug.Log(numCollisions);
             for (var i = 0; i < numCollisions; i++)
             {
                 var colliderObject = _hitColliders[i].gameObject;
@@ -46,5 +47,6 @@ namespace SadBrains
 
             return collisions;
         }
+
     }
 }

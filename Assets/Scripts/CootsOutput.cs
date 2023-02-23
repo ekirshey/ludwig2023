@@ -10,20 +10,18 @@ namespace SadBrains
         [SerializeField] private Coots cootsPrefabs;
         [SerializeField] private float spawnRate;
         [SerializeField] private Transform spawnLocation;
-        [SerializeField] private int defaultWaitTime;
         [SerializeField] private TMP_Text countdownText;
-        [SerializeField] private Image typeImage;
         [SerializeField] private Button skipButton;
         [SerializeField] private Animator animator;
         
         public CootsType CootsType { get; private set; }
         private bool _skip;
         private bool _paused;
+        private int _waitTime;
         private static readonly int OutputCoots = Animator.StringToHash("OutputCoots");
         
         private void Start()
         {
-            countdownText.text = defaultWaitTime.ToString();
             StartCoroutine(Wait());
         }
 
@@ -67,10 +65,10 @@ namespace SadBrains
         private IEnumerator Wait()
         {
             var count = 0;
-            while (count < defaultWaitTime && !_skip)
+            while (count < _waitTime && !_skip)
             {
                 count++;
-                countdownText.text = (defaultWaitTime - count).ToString();
+                countdownText.text = (_waitTime - count).ToString();
                 yield return new WaitForSeconds(1.0f);
             }
             countdownText.gameObject.SetActive(false);
@@ -96,7 +94,12 @@ namespace SadBrains
         public void SetCootsType(CootsType cootsType)
         {
             CootsType = cootsType;
-            typeImage.sprite = cootsType.sprite;
+        }
+
+        public void SetWaitTime(int waitTime)
+        {
+            _waitTime = waitTime;
+            countdownText.text = _waitTime.ToString();
         }
     }
 }
