@@ -19,8 +19,9 @@ namespace SadBrains
         [SerializeField] private Vector3 catGptPosition;
         [SerializeField] private float catGptSpeed;
         [SerializeField] private List<string> speech;
-
-
+        [SerializeField] private ScreenShakeController screenShake;
+        [SerializeField] private ScreenShakeController.ScreenShakeParameters shakeParams;
+        
         private void Start()
         {
             swapUI.gameObject.SetActive(false);
@@ -45,8 +46,8 @@ namespace SadBrains
 
         private IEnumerator SwapEvent()
         {
+            screenShake.Shake(shakeParams);
             PauseAll();
-            // ADD AI COnversation
             yield return StartCoroutine(CatGptIntro());
             catGpt.DeductHappiness(happinessLoss);
 
@@ -76,6 +77,8 @@ namespace SadBrains
 
                 yield return sequence.Play().WaitForCompletion();
                 
+                ioList.Add(first);
+                ioList.Add(second);
             }
             
             swapUI.gameObject.SetActive(true);
@@ -88,6 +91,7 @@ namespace SadBrains
             EnableAll();
             timer.TimerFinished -= OnTimerFinished;
             swapUI.gameObject.SetActive(false);
+            catGpt.AddHappinessAlert(Finish, happinessToContinue);
         }
         
         
