@@ -9,6 +9,7 @@ namespace SadBrains
 {
     public class SwapPhase : Phase
     {
+        [SerializeField] private GameObject swapUI;
         [SerializeField] private Timer timer;
         [SerializeField] private int swapTime;
         [SerializeField] private int numSwaps;
@@ -19,6 +20,12 @@ namespace SadBrains
         [SerializeField] private float catGptSpeed;
         [SerializeField] private List<string> speech;
 
+
+        private void Start()
+        {
+            swapUI.gameObject.SetActive(false);
+        }
+        
         public override void SetActive()
         {
             base.SetActive();
@@ -49,17 +56,9 @@ namespace SadBrains
             {
                 var first = ioList.PopRandomElement();
                 var second = ioList.PopRandomElement();
-
-                var newSecond = new Tuple<CootsOutput, CootsInput>(second.Item1, first.Item2);
-                var newFirst = new Tuple<CootsOutput, CootsInput>(second.Item1, second.Item2);
-
-                GameManager.Instance.RemoveIO(first);
-                GameManager.Instance.RemoveIO(second);
-                GameManager.Instance.AddIO(newFirst.Item1, newFirst.Item2);
-                GameManager.Instance.AddIO(newSecond.Item1, newSecond.Item2);
-
-                var firstOutput = newFirst.Item2;
-                var secondOutput = newSecond.Item2;
+                
+                var firstOutput = first.Item2;
+                var secondOutput = second.Item2;
                 var sequence = DOTween.Sequence();
                 var firstInitialPos = firstOutput.transform.position;
                 var secondInitialPos = secondOutput.transform.position;
@@ -67,17 +66,19 @@ namespace SadBrains
                     .Join(secondOutput.transform.DOMoveX(secondInitialPos.x + 4, 1.0f))
                     .AppendCallback(() =>
                     {
-                        newSecond.Item2.SetCootsType(second.Item1.CootsType);
-                        newFirst.Item2.SetCootsType(first.Item1.CootsType);
+                        var transform1 = firstOutput.transform;
+                        var transform2 = secondOutput.transform;
+                        (transform1.position, transform2.position) = (transform2.position, transform1.position);
                     })
                     .AppendInterval(0.5f)
-                    .Append(firstOutput.transform.DOMove(firstInitialPos, 1.0f))
-                    .Join(secondOutput.transform.DOMove(secondInitialPos, 1.0f));
+                    .Append(firstOutput.transform.DOMove(secondInitialPos, 1.0f))
+                    .Join(secondOutput.transform.DOMove(firstInitialPos, 1.0f));
 
                 yield return sequence.Play().WaitForCompletion();
-
+                
             }
             
+            swapUI.gameObject.SetActive(true);
             timer.TimerFinished += OnTimerFinished;
             StartCoroutine(timer.RunTimer(swapTime));
         }
@@ -86,6 +87,7 @@ namespace SadBrains
         {
             EnableAll();
             timer.TimerFinished -= OnTimerFinished;
+            swapUI.gameObject.SetActive(false);
         }
         
         

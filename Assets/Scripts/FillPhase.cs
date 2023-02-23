@@ -42,18 +42,21 @@ namespace SadBrains
 
         private void FillPhaseFinished()
         {
-            fillPhasePanel.gameObject.SetActive(false);
             Finish();
         }
         
         private IEnumerator IOTimer()
         {
-            while (AvailableCootsTypes.Count > 0)
+            while (true)
             {
                 CreateIO();
-                yield return StartCoroutine(timer.RunTimer(ioSpawnRate)); ;
+                if (AvailableCootsTypes.Count <= 0)
+                {
+                    break;
+                }
+                yield return StartCoroutine(timer.RunTimer(ioSpawnRate));
             }
-            
+            fillPhasePanel.gameObject.SetActive(false);
             // After all io is spawned, set the alert to meet
             catGpt.AddHappinessAlert(FillPhaseFinished, happinessToContinue);
         }
