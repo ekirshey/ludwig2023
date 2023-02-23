@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ namespace SadBrains
         [SerializeField] private TMP_Text countdownText;
         [SerializeField] private Button skipButton;
         [SerializeField] private Animator animator;
+        [SerializeField] private Canvas canvas;
         
         public CootsType CootsType { get; private set; }
         private bool _skip;
@@ -22,7 +24,7 @@ namespace SadBrains
         
         private void Start()
         {
-            StartCoroutine(Wait());
+            
         }
 
         private void OnEnable()
@@ -60,6 +62,7 @@ namespace SadBrains
         private void OnSkip()
         {
             _skip = true;
+            canvas.gameObject.SetActive(false);
         }
 
         private IEnumerator Wait()
@@ -71,7 +74,7 @@ namespace SadBrains
                 countdownText.text = (_waitTime - count).ToString();
                 yield return new WaitForSeconds(1.0f);
             }
-            countdownText.gameObject.SetActive(false);
+            canvas.gameObject.SetActive(false);
             StartCoroutine(Spawn());
         }
         
@@ -91,15 +94,24 @@ namespace SadBrains
             }
         }
 
-        public void SetCootsType(CootsType cootsType)
+        public void Initialize(Vector3 position, CootsType type, int waitTime)
         {
-            CootsType = cootsType;
-        }
-
-        public void SetWaitTime(int waitTime)
-        {
+            CootsType = type;
             _waitTime = waitTime;
+            countdownText.gameObject.SetActive(true);
             countdownText.text = _waitTime.ToString();
+
+            // Tween to position
+            var targetPosition = position;
+            var initialPosition = position;
+            initialPosition.x -= 5;
+            transform.position = initialPosition;
+            transform.DOMove(targetPosition, 0.5f).OnComplete(() =>
+            {
+                StartCoroutine(Wait());
+            });
+
         }
+        
     }
 }

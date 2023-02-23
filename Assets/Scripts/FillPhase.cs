@@ -18,8 +18,7 @@ namespace SadBrains
             var cootsType = AvailableCootsTypes.PopRandomElement();
             var output = Instantiate(cootsType.output, GameManager.Instance.transform);
             output.transform.position = outputLoc;
-            output.SetCootsType(cootsType);
-            output.SetWaitTime(outputWaitTime);
+            output.Initialize(outputLoc, cootsType, outputWaitTime);
             
             var input = Instantiate(cootsType.input, GameManager.Instance.transform);
             input.transform.position = inputLoc;
