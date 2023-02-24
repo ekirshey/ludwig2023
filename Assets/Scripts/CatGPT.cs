@@ -14,7 +14,7 @@ namespace SadBrains
         [SerializeField] private int happinessLoss;
         [SerializeField] private int maxHappiness;
         [SerializeField] private int happinessStart;
-        [SerializeField] private AITerminal aiTerminal;
+        [SerializeField] private DialogTerminal dialogTerminal;
 
         public int Happiness { get; private set; }
         public int MaxHappiness => maxHappiness;
@@ -31,24 +31,24 @@ namespace SadBrains
 
         private void OnEnable()
         {
-            CootsInput.DeliveredBadCoots += OnDeliveredBadCoots;
-            CootsInput.DeliveredGoodCoots += OnDeliveredGoodCoots;
-            Coots.CootsDestroyed += OnCootsDestroyed;
+            Input.DeliveredBadOutputObject += OnDeliveredBadOutputObject;
+            Input.DeliveredGoodOutputObject += OnDeliveredGoodOutputObject;
+            OutputObject.OutputObjectDestroyed += OnOutputObjectDestroyed;
         }
 
         private void OnDisable()
         {
-            CootsInput.DeliveredBadCoots -= OnDeliveredBadCoots;
-            CootsInput.DeliveredGoodCoots -= OnDeliveredGoodCoots;
-            Coots.CootsDestroyed -= OnCootsDestroyed;
+            Input.DeliveredBadOutputObject -= OnDeliveredBadOutputObject;
+            Input.DeliveredGoodOutputObject -= OnDeliveredGoodOutputObject;
+            OutputObject.OutputObjectDestroyed -= OnOutputObjectDestroyed;
         }
 
-        private void OnCootsDestroyed()
+        private void OnOutputObjectDestroyed()
         {
             DeductHappiness(happinessLoss);
         }
         
-        private void OnDeliveredGoodCoots(CootsType obj)
+        private void OnDeliveredGoodOutputObject(OutputObjectType obj)
         {
             Happiness += happinessGain;
             if (Happiness > maxHappiness)
@@ -67,7 +67,7 @@ namespace SadBrains
             }
         }
 
-        private void OnDeliveredBadCoots(CootsType arg1, CootsType arg2)
+        private void OnDeliveredBadOutputObject(OutputObjectType arg1, OutputObjectType arg2)
         {
             DeductHappiness(happinessLoss);
         }
@@ -95,10 +95,10 @@ namespace SadBrains
                 speechFinished = true;
             }
 
-            aiTerminal.OnNext += OnSpeechFinished;
-            aiTerminal.SetText(text);
+            dialogTerminal.OnNext += OnSpeechFinished;
+            dialogTerminal.SetText(text);
             yield return new WaitUntil(() => speechFinished);
-            aiTerminal.OnNext -= OnSpeechFinished;
+            dialogTerminal.OnNext -= OnSpeechFinished;
         }
 
         public IEnumerator MoveToTarget(Vector3 destination, float moveDuration)

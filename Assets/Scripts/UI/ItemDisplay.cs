@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using SadBrains.Utils;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 namespace SadBrains.UI
@@ -11,18 +9,23 @@ namespace SadBrains.UI
         [SerializeField] private Placeable itemPrefab;
         [SerializeField] private int count;
 
-        private Stack<Placeable> _items;
+        private Stack<Placeable> Items { get; set; }
         private Placeable _currentItem;
 
-        private void Awake()
+        private void Init()
         {
-            _items = new Stack<Placeable>();
+            Items = new Stack<Placeable>();
             for (var i = 0; i < count; i++)
             {
                 var device = Instantiate(itemPrefab);
                 device.gameObject.SetActive(false);
-                _items.Push(device);
+                Items.Push(device);
             }    
+        }
+        
+        private void Awake()
+        {
+            Init();
         }
 
         private void OnEnable()
@@ -41,13 +44,13 @@ namespace SadBrains.UI
             // TODO this check doesnt seem to work?
             if (placeable == _currentItem)
             {
-                _items.Push(placeable);
+                Items.Push(placeable);
             }
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            _currentItem = _items.Pop();
+            _currentItem = Items.Pop();
             _currentItem.StartMove();
         }
 
@@ -57,10 +60,10 @@ namespace SadBrains.UI
             if (!_currentItem.Place())
             {
                 _currentItem.gameObject.SetActive(false);
-                _items.Push(_currentItem);
+                Items.Push(_currentItem);
             }
 
-            if (_items.Count == 0)
+            if (Items.Count == 0)
             {
                 Destroy(gameObject);
             }
@@ -83,7 +86,17 @@ namespace SadBrains.UI
 
             var deviceTransform = _currentItem.transform;
             deviceTransform.position = newPosition;
+        }
 
+        public void ChangeType(Placeable placeable)
+        {
+            foreach (var item in Items)
+            {
+                Destroy(item.gameObject);
+            }
+            Items.Clear();
+            itemPrefab = placeable;
+            Init();
         }
     }
 }

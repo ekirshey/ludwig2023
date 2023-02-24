@@ -50,7 +50,7 @@ namespace SadBrains
             yield return StartCoroutine(CatGptIntro());
             catGpt.DeductHappiness(happinessLoss);
 
-            var ioList = new List<CootsInput>();
+            var ioList = new List<Input>();
             ioList.AddRange(GameManager.Instance.Inputs);
             for (var i = 0; i < numSwaps; i++)
             {

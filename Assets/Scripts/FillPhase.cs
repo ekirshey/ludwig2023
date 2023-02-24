@@ -28,14 +28,13 @@ namespace SadBrains
             var outputLoc = AvailableLeftIOSpawns.PopRandomElement();
             var inputLoc = AvailableRightIOSpawns.PopRandomElement();
 
-            var cootsType = AvailableCootsTypes.PopRandomElement();
+            var cootsType = AvailableIOPairs.PopRandomElement();
             var output = Instantiate(cootsType.output, GameManager.Instance.transform);
             output.transform.position = outputLoc;
-            output.Initialize(outputLoc, cootsType, outputWaitTime);
+            output.Initialize(outputLoc, outputWaitTime);
             
             var input = Instantiate(cootsType.input, GameManager.Instance.transform);
             input.transform.position = inputLoc;
-            input.SetCootsType(cootsType);
             
             GameManager.Instance.AddIO(output, input);
         }
@@ -50,7 +49,7 @@ namespace SadBrains
             while (true)
             {
                 CreateIO();
-                if (AvailableCootsTypes.Count <= 0)
+                if (AvailableIOPairs.Count <= 0)
                 {
                     break;
                 }

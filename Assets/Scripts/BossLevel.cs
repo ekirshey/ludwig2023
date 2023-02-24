@@ -7,11 +7,14 @@ namespace SadBrains
 {
     public class BossLevel : MonoBehaviour
     {
+        [SerializeField] private GameObject debris;
         [SerializeField] private List<FishOutput> outputs;
-        [SerializeField] private List<FishInput> inputs;
+        [SerializeField] private List<Input> inputs;
+        [SerializeField] private Vector3 debrisPosition;
+        [SerializeField] private int debrisSpeed;
         [SerializeField] private int ioEnterSpeed;
         [SerializeField] private int ioEnterDistance;
-        
+        [SerializeField] private ScreenShakeController.ScreenShakeParameters debrisShake;
 
         public IEnumerator InitializeIO()
         {
@@ -37,9 +40,9 @@ namespace SadBrains
             }
         }
 
-        public IEnumerator DropDebris()
+        public void AddDebris()
         {
-            yield return null;
+            debris.gameObject.SetActive(true);
         }
     }
 }

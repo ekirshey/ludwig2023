@@ -9,7 +9,14 @@ namespace SadBrains
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private List<CootsType> cootsTypes;
+        [Serializable]
+        public class IOPair
+        {
+            public Output output;
+            public Input input;
+        }
+
+        [SerializeField] private List<IOPair> ioPairs;
         [SerializeField] private List<Vector3> leftIOLocations;
         [SerializeField] private List<Vector3> rightIOLocations;
         [SerializeField] private List<Rect> disallowedRegions;
@@ -20,11 +27,11 @@ namespace SadBrains
         private int _lives;
         private int _time;
 
-        public List<CootsType> CootsTypes => cootsTypes;
+        public List<IOPair> IOPairs => ioPairs;
         public List<Vector3> LeftIOLocations => leftIOLocations;
         public List<Vector3> RightIOLocations => rightIOLocations;
-        public List<CootsInput> Inputs { get; private set; }
-        public List<CootsOutput> Outputs { get; private set; }
+        public List<Input> Inputs { get; private set; }
+        public List<Output> Outputs { get; private set; }
 
         private List<Phase> _gamePhases;
         private int _currentPhaseIdx;
@@ -41,8 +48,8 @@ namespace SadBrains
             
             DontDestroyOnLoad(gameObject);
             
-            Inputs = new List<CootsInput>();
-            Outputs = new List<CootsOutput>();
+            Inputs = new List<Input>();
+            Outputs = new List<Output>();
             _gamePhases = gameObject.GetComponentsInChildren<Phase>().ToList();
         }
 
@@ -62,7 +69,7 @@ namespace SadBrains
             _gamePhases[_currentPhaseIdx].PhaseFinished += OnPhaseFinished;
         }
         
-        public void AddIO(CootsOutput output, CootsInput input)
+        public void AddIO(Output output, Input input)
         {
             Outputs.Add(output);
             Inputs.Add(input);

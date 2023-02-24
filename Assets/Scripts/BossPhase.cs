@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using SadBrains.UI;
 using UnityEngine;
 
 namespace SadBrains
@@ -8,14 +10,18 @@ namespace SadBrains
     public class BossPhase : Phase
     {
         public static event Action DestroyDevices;
-        public static event Action SortFish;
         
         [Tooltip("Mechanics")]
         [SerializeField] private BossLevel bossLevel;
+        [SerializeField] private int countdownTime;
 
         [Tooltip("UI")]
         [SerializeField] private GameObject bossUI;
         [SerializeField] private Timer timer;
+        [SerializeField] private ItemDisplay topSorters;
+        [SerializeField] private ItemDisplay bottomSorters;
+        [SerializeField] private Placeable topFishSorter;
+        [SerializeField] private Placeable bottomFishSorter;
         
         [Tooltip("CatGPT")]
         [SerializeField] private Vector3 catGptStartPosition;
@@ -23,9 +29,19 @@ namespace SadBrains
         [SerializeField] private float catGptSpeed;
         [SerializeField] private List<string> preDestructionText;
         [SerializeField] private List<string> speech;
-        [SerializeField] private ScreenShakeController screenShake;
-        [SerializeField] private ScreenShakeController.ScreenShakeParameters shakeParams;
+        [SerializeField] private CEO ceo;
         
+        [Tooltip("camera")]
+        [SerializeField] private SpriteRenderer fadeToBlack;
+        [SerializeField] private float fadeTime;
+        [SerializeField] private ScreenShakeController shakeController;
+        [SerializeField] private ScreenShakeController.ScreenShakeParameters destructionShake;
+        
+        private void Awake()
+        {
+            bossUI.gameObject.SetActive(false);
+        }
+
         private IEnumerator CatGptIntro()
         {
             catGpt.transform.position = catGptStartPosition;
@@ -34,22 +50,39 @@ namespace SadBrains
             {
                 yield return StartCoroutine(catGpt.Speak(text));
             }
-            yield return StartCoroutine(catGpt.MoveToTarget(catGptStartPosition, catGptSpeed));
         }
         
         private IEnumerator BossEvent()
         {
-            screenShake.Shake(shakeParams);
             PauseAll();
             bossLevel.gameObject.SetActive(true);
             DestroyDevices?.Invoke();
-            SortFish?.Invoke();
+            topSorters.ChangeType(topFishSorter);
+            bottomSorters.ChangeType(bottomFishSorter);
             yield return StartCoroutine(CatGptIntro());
-            yield return StartCoroutine(bossLevel.DropDebris());
+            shakeController.Shake(destructionShake);
+            yield return fadeToBlack.DOColor(Color.black, fadeTime).WaitForCompletion();
+            catGpt.transform.position = catGptStartPosition;
+            bossLevel.AddDebris();
+            yield return fadeToBlack.DOColor(new Color(0,0,0,0), fadeTime).WaitForCompletion();
+            
+            yield return StartCoroutine( ceo.RunScript());
+            
             yield return StartCoroutine(GameManager.Instance.DeleteIO(1.0f));
             yield return StartCoroutine(bossLevel.InitializeIO());
+            
             EnableAll();
-            yield return null;
+
+            timer.TimerFinished += OnTimerFinished;
+            StartCoroutine(timer.RunTimer(countdownTime));
+            bossUI.gameObject.SetActive(true);
+        }
+
+        private void OnTimerFinished()
+        {
+            timer.TimerFinished -= OnTimerFinished;
+            
+            // Check for win condition
         }
 
         public override void SetActive()

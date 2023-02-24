@@ -12,10 +12,9 @@ namespace SadBrains
         public static event Action Pause;
         public static event Action Resume;
 
-        protected List<CootsType> AvailableCootsTypes;
+        protected List<GameManager.IOPair> AvailableIOPairs;
         protected List<Vector3> AvailableLeftIOSpawns;
         protected List<Vector3> AvailableRightIOSpawns;
-        protected Dictionary<CootsType, int> DeliveredCoots;
         
         protected bool Active { get; set; }
 
@@ -23,15 +22,10 @@ namespace SadBrains
         {
             Active = true;
 
-            var cootsTypes = GameManager.Instance.CootsTypes;
-            DeliveredCoots = new Dictionary<CootsType, int>();
-            foreach (var type in cootsTypes)
-            {
-                DeliveredCoots.Add(type, 0);
-            }
-            
-            AvailableCootsTypes = new List<CootsType>();
-            AvailableCootsTypes.AddRange(cootsTypes);
+            var cootsTypes = GameManager.Instance.IOPairs;
+
+            AvailableIOPairs = new List<GameManager.IOPair>();
+            AvailableIOPairs.AddRange(cootsTypes);
             
             AvailableLeftIOSpawns = new List<Vector3>();
             AvailableLeftIOSpawns.AddRange(GameManager.Instance.LeftIOLocations);

@@ -1,12 +1,15 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace SadBrains
 {
     public class OutputObject : MonoBehaviour
     {
-        [SerializeField] protected SpriteRenderer spriteRenderer;
+        public static event Action OutputObjectDestroyed;
+        [SerializeField] private OutputObjectType type;
 
+        public OutputObjectType OutputObjectType => type;
         private BoxCollider2D _collider;
         private Rigidbody2D _rigidbody2D;
         private Camera _camera;
@@ -54,10 +57,13 @@ namespace SadBrains
             _collider.enabled = true;
         }
         
-        public virtual void Destroy()
+        public void Destroy()
         {
             _moveTween?.Kill();
             Destroy(gameObject);
+            OutputObjectDestroyed?.Invoke();
         }
+        
+
     }
 }

@@ -13,28 +13,28 @@ namespace SadBrains
         [SerializeField] private SpriteRenderer bottomUpHeadshot;
         [SerializeField] private GameObject bottomDown;
         [SerializeField] private SpriteRenderer bottomDownHeadshot;
-        public event Action<CootsType> CootsTypeChanged;
+        [SerializeField] private List<Sprite> sprites;
+        [SerializeField] private OutputObjectType minIdx;
+        [SerializeField] private OutputObjectType maxIdx;
+        public event Action<OutputObjectType> OutputObjectTypeChanged;
 
         private SpriteRenderer _buttonRenderer;
         private BoxCollider2D _boxCollider2D;
-        private List<CootsType> _cootsTypes;
         private int _typeIdx;
 
         private void Start()
         {
             _buttonRenderer = GetComponent<SpriteRenderer>();
             _boxCollider2D = GetComponent<BoxCollider2D>();
-            _cootsTypes = new List<CootsType>();
-            _cootsTypes.AddRange(GameManager.Instance.CootsTypes);
-            bottomUpHeadshot.sprite = _cootsTypes[_typeIdx].sprite;
-            bottomDownHeadshot.sprite = _cootsTypes[_typeIdx].sprite;
-            
-            CootsTypeChanged?.Invoke(_cootsTypes[_typeIdx]);
-        }
+            bottomUpHeadshot.sprite = sprites[_typeIdx];
+            bottomDownHeadshot.sprite = sprites[_typeIdx];
 
+            OutputObjectTypeChanged?.Invoke(minIdx + _typeIdx);
+        }
+        
         private bool HandleMouseDown()
         {
-            if (!Input.GetMouseButtonDown(0) || bottomDown.activeSelf) return false;
+            if (!UnityEngine.Input.GetMouseButtonDown(0) || bottomDown.activeSelf) return false;
             var worldPos = MouseHelpers.MouseWorldPosition();
             if (!_boxCollider2D.bounds.Contains(new Vector3(worldPos.x, worldPos.y, 0))) return false;
             _buttonRenderer.sprite = onClickSprite;
@@ -47,7 +47,7 @@ namespace SadBrains
         {
             if (HandleMouseDown()) return;
             
-            if (!Input.GetMouseButtonUp(0)) return;
+            if (!UnityEngine.Input.GetMouseButtonUp(0)) return;
             bottomUp.gameObject.SetActive(true);
             bottomDown.gameObject.SetActive(false);
             _buttonRenderer.sprite = baseSprite;
@@ -56,15 +56,14 @@ namespace SadBrains
             if (!_boxCollider2D.bounds.Contains(new Vector3(worldPos.x, worldPos.y, 0))) return;
             
             _typeIdx++;
-            if (_typeIdx >= _cootsTypes.Count)
+            if (_typeIdx > (int)maxIdx - (int)minIdx)
             {
                 _typeIdx = 0;
             }
 
-            var cootsType = _cootsTypes[_typeIdx];
-            bottomUpHeadshot.sprite = _cootsTypes[_typeIdx].sprite;
-            bottomDownHeadshot.sprite = _cootsTypes[_typeIdx].sprite;
-            CootsTypeChanged?.Invoke(cootsType);
+            bottomUpHeadshot.sprite = sprites[_typeIdx];
+            bottomDownHeadshot.sprite = sprites[_typeIdx];
+            OutputObjectTypeChanged?.Invoke(minIdx + _typeIdx);
         }
         
 

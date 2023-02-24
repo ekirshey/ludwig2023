@@ -31,10 +31,10 @@ namespace SadBrains
             _paused = true;
             foreach (Transform child in transform)
             {
-                var coot = child.GetComponent<Coots>();
-                if (coot != null)
+                var outputObject = child.GetComponent<OutputObject>();
+                if (outputObject != null)
                 {
-                    coot.DisableCollisions();
+                    outputObject.DisableCollisions();
                 }
             }
         }
