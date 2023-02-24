@@ -6,7 +6,7 @@ namespace SadBrains
 {
     public class ScreenShakeController : MonoBehaviour
     {
-        [SerializeField] private Camera camera;
+        [SerializeField] private Camera cameraToShake;
         [Serializable]
         public struct ScreenShakeParameters
         {
@@ -18,7 +18,7 @@ namespace SadBrains
         
         public void Shake(ScreenShakeParameters parameters)
         {
-            camera.DOShakePosition(parameters.duration, parameters.strength, parameters.vibrato, parameters.randomness);
+            cameraToShake.DOShakePosition(parameters.duration, parameters.strength, parameters.vibrato, parameters.randomness);
         }
     }
 }

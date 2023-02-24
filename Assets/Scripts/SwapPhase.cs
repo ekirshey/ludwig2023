@@ -9,12 +9,17 @@ namespace SadBrains
 {
     public class SwapPhase : Phase
     {
-        [SerializeField] private GameObject swapUI;
-        [SerializeField] private Timer timer;
+        [Tooltip("Mechanic Numbers")]
         [SerializeField] private int swapTime;
         [SerializeField] private int numSwaps;
         [SerializeField] private int happinessToContinue;
         [SerializeField] private int happinessLoss;
+        
+        [Tooltip("UI")]
+        [SerializeField] private GameObject swapUI;
+        [SerializeField] private Timer timer;
+        
+        [Tooltip("CatGPT")]
         [SerializeField] private Vector3 catGptStartPosition;
         [SerializeField] private Vector3 catGptPosition;
         [SerializeField] private float catGptSpeed;
@@ -27,12 +32,6 @@ namespace SadBrains
             swapUI.gameObject.SetActive(false);
         }
         
-        public override void SetActive()
-        {
-            base.SetActive();
-            StartCoroutine(SwapEvent());
-        }
-
         private IEnumerator CatGptIntro()
         {
             catGpt.transform.position = catGptStartPosition;
@@ -51,34 +50,32 @@ namespace SadBrains
             yield return StartCoroutine(CatGptIntro());
             catGpt.DeductHappiness(happinessLoss);
 
-            var ioList = new List<Tuple<CootsOutput, CootsInput>>();
-            ioList.AddRange(GameManager.Instance.IoPair);
+            var ioList = new List<CootsInput>();
+            ioList.AddRange(GameManager.Instance.Inputs);
             for (var i = 0; i < numSwaps; i++)
             {
-                var first = ioList.PopRandomElement();
-                var second = ioList.PopRandomElement();
+                var firstInput = ioList.PopRandomElement();
+                var secondInput = ioList.PopRandomElement();
                 
-                var firstOutput = first.Item2;
-                var secondOutput = second.Item2;
                 var sequence = DOTween.Sequence();
-                var firstInitialPos = firstOutput.transform.position;
-                var secondInitialPos = secondOutput.transform.position;
-                sequence.Append(firstOutput.transform.DOMoveX(firstInitialPos.x + 4, 1.0f))
-                    .Join(secondOutput.transform.DOMoveX(secondInitialPos.x + 4, 1.0f))
+                var firstInitialPos = firstInput.transform.position;
+                var secondInitialPos = secondInput.transform.position;
+                sequence.Append(firstInput.transform.DOMoveX(firstInitialPos.x + 4, 1.0f))
+                    .Join(secondInput.transform.DOMoveX(secondInitialPos.x + 4, 1.0f))
                     .AppendCallback(() =>
                     {
-                        var transform1 = firstOutput.transform;
-                        var transform2 = secondOutput.transform;
+                        var transform1 = firstInput.transform;
+                        var transform2 = secondInput.transform;
                         (transform1.position, transform2.position) = (transform2.position, transform1.position);
                     })
                     .AppendInterval(0.5f)
-                    .Append(firstOutput.transform.DOMove(secondInitialPos, 1.0f))
-                    .Join(secondOutput.transform.DOMove(firstInitialPos, 1.0f));
+                    .Append(firstInput.transform.DOMove(secondInitialPos, 1.0f))
+                    .Join(secondInput.transform.DOMove(firstInitialPos, 1.0f));
 
                 yield return sequence.Play().WaitForCompletion();
                 
-                ioList.Add(first);
-                ioList.Add(second);
+                ioList.Add(firstInput);
+                ioList.Add(secondInput);
             }
             
             swapUI.gameObject.SetActive(true);
@@ -92,6 +89,12 @@ namespace SadBrains
             timer.TimerFinished -= OnTimerFinished;
             swapUI.gameObject.SetActive(false);
             catGpt.AddHappinessAlert(Finish, happinessToContinue);
+        }
+        
+        public override void SetActive()
+        {
+            base.SetActive();
+            StartCoroutine(SwapEvent());
         }
         
         

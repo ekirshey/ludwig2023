@@ -110,7 +110,6 @@ namespace SadBrains
             {
                 StartCoroutine(Wait());
             });
-
         }
         
     }

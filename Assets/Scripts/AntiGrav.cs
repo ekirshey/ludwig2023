@@ -5,34 +5,29 @@ namespace SadBrains
 {
     public class AntiGrav : Device
     {
-        [SerializeField] private CootsTrigger top;
-        [SerializeField] private CootsTrigger bottom;
+        [SerializeField] private OutputObjectTrigger top;
+        [SerializeField] private OutputObjectTrigger bottom;
         
-        private void OnEnable()
+        protected override void OnEnable()
         {
-            top.CootsEntered += OnCootsOnTop;
-            bottom.CootsEntered += OnCootsOnBottom;
+            base.OnEnable();
+            bottom.OutputObjectEntered += OnOutputObjectEntered;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
-            top.CootsEntered -= OnCootsOnTop;
-            bottom.CootsEntered -= OnCootsOnBottom;
+            base.OnDisable();
+            bottom.OutputObjectEntered -= OnOutputObjectEntered;
         }
 
-        private void OnCootsOnTop(Coots coots)
+        private void OnOutputObjectEntered(OutputObject outputObject)
         {
-
-        }
-        
-        private void OnCootsOnBottom(Coots coots)
-        {
-            coots.DisableRigidBody();
+            outputObject.DisableRigidBody();
             var sequence = DOTween.Sequence();
-            sequence.Append(coots.transform.DOMove(bottom.Center, 0.1f))
-                .Append(coots.transform.DOMove(top.Center, 1.0f))
-                .Append(coots.transform.DOMoveX(coots.transform.position.x + 3, 0.1f))
-                .AppendCallback(coots.EnableRigidBody).Play();
+            sequence.Append(outputObject.transform.DOMove(bottom.Center, 0.1f))
+                .Append(outputObject.transform.DOMove(top.Center, 1.0f))
+                .Append(outputObject.transform.DOMoveX(outputObject.transform.position.x + 3, 0.1f))
+                .AppendCallback(outputObject.EnableRigidBody).Play();
             
         }
 

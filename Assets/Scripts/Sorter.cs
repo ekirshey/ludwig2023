@@ -5,30 +5,39 @@ namespace SadBrains
 {
     public class Sorter : Device
     {
-        [SerializeField] private CootsTrigger topSort;
-        [SerializeField] private CootsTrigger bottomSort;
+        [SerializeField] private OutputObjectTrigger topSort;
+        [SerializeField] private OutputObjectTrigger bottomSort;
         [SerializeField] private SorterTypeSelect typeSelect;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private bool isTopSort;
         [SerializeField] private Transform topTarget;
         [SerializeField] private Transform bottomTarget;
         [SerializeField] private float moveThroughTime;
-        
+
+        private bool _sortFish;
         private CootsType _allowedCootsType;
-        private Tween _moveTween;
         
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             typeSelect.CootsTypeChanged += OnCootsTypeChanged;
-            topSort.CootsEntered += MoveCoots;
-            bottomSort.CootsEntered += MoveCoots;
+            topSort.OutputObjectEntered += MoveOutputObject;
+            bottomSort.OutputObjectEntered += MoveOutputObject;
+            BossPhase.SortFish += SwapToFish;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             typeSelect.CootsTypeChanged -= OnCootsTypeChanged;
-            topSort.CootsEntered -= MoveCoots;
-            bottomSort.CootsEntered -= MoveCoots;
+            topSort.OutputObjectEntered -= MoveOutputObject;
+            bottomSort.OutputObjectEntered -= MoveOutputObject;
+            BossPhase.SortFish -= SwapToFish;
+        }
+        
+        private void SwapToFish()
+        {
+            _sortFish = true;
         }
         
         private void OnCootsTypeChanged(CootsType type)
@@ -36,11 +45,25 @@ namespace SadBrains
             _allowedCootsType = type;
         }
 
-        private void MoveCoots(Coots coots)
+        private void MoveOutputObject(OutputObject outputObject)
+        {
+            outputObject.ResetVelocity();
+
+            if (_sortFish)
+            {
+                SortFish();
+            }
+            else
+            {
+                SortCoots(outputObject);
+            }
+        }
+
+        private void SortCoots(OutputObject outputObject)
         {
             Vector3 targetPosition;
-            coots.ResetVelocity();
             
+            var coots = outputObject.GetComponent<Coots>();
             if (coots.CootsType == _allowedCootsType)
             {
                 targetPosition = isTopSort ? topSort.Center : bottomSort.Center;
@@ -54,7 +77,11 @@ namespace SadBrains
 
             coots.transform.position = targetPosition;
         }
-        
+
+        private void SortFish()
+        {
+            
+        }
         
         public override void DisableCollision()
         {

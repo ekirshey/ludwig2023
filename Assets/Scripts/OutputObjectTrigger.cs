@@ -4,9 +4,9 @@ using UnityEngine;
 namespace SadBrains
 {
     [RequireComponent(typeof(Collider2D))]
-    public class CootsTrigger : MonoBehaviour
+    public class OutputObjectTrigger : MonoBehaviour
     {
-        public event Action<Coots> CootsEntered;
+        public event Action<OutputObject> OutputObjectEntered;
 
         public Vector3 Center => _collider.bounds.center;
 
@@ -19,9 +19,9 @@ namespace SadBrains
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            var coots = col.GetComponent<Coots>();
-            if (coots == null) return;
-            CootsEntered?.Invoke(coots);
+            var outputObject = col.GetComponent<OutputObject>();
+            if (outputObject == null) return;
+            OutputObjectEntered?.Invoke(outputObject);
         }
     }
 }

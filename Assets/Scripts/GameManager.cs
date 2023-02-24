@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 namespace SadBrains
@@ -21,8 +23,9 @@ namespace SadBrains
         public List<CootsType> CootsTypes => cootsTypes;
         public List<Vector3> LeftIOLocations => leftIOLocations;
         public List<Vector3> RightIOLocations => rightIOLocations;
-        public List<Tuple<CootsOutput, CootsInput>> IoPair { get; private set; }
-        
+        public List<CootsInput> Inputs { get; private set; }
+        public List<CootsOutput> Outputs { get; private set; }
+
         private List<Phase> _gamePhases;
         private int _currentPhaseIdx;
 
@@ -37,8 +40,9 @@ namespace SadBrains
             Instance = this;
             
             DontDestroyOnLoad(gameObject);
-
-            IoPair = new List<Tuple<CootsOutput, CootsInput>>();
+            
+            Inputs = new List<CootsInput>();
+            Outputs = new List<CootsOutput>();
             _gamePhases = gameObject.GetComponentsInChildren<Phase>().ToList();
         }
 
@@ -60,13 +64,10 @@ namespace SadBrains
         
         public void AddIO(CootsOutput output, CootsInput input)
         {
-            IoPair.Add(new Tuple<CootsOutput, CootsInput>(output, input));
+            Outputs.Add(output);
+            Inputs.Add(input);
         }
         
-        public void RemoveIO(Tuple<CootsOutput, CootsInput> io)
-        {
-            IoPair.Remove(io);
-        }
         
         public bool InDisallowedRegion(Vector2 center, Vector2 size)
         {
@@ -109,7 +110,34 @@ namespace SadBrains
                 Gizmos.DrawWireCube(rect.center, new Vector3(rect.width, rect.height, 0));
             }
         }
+        
+        public IEnumerator DeleteIO(float retractSpeed)
+        {
+            var retract = DOTween.Sequence();
 
+            foreach (var output in Outputs)
+            {
+                var outputTransform = output.transform;
+                retract.Join(outputTransform.DOMoveX(outputTransform.position.x - 4, retractSpeed));
+            }
+            
+            foreach (var input in Inputs)
+            {
+                var inputTransform = input.transform;
+                retract.Join(inputTransform.DOMoveX(inputTransform.position.x + 4, retractSpeed));
+            }
 
+            yield return retract.Play().WaitForCompletion();
+            
+            foreach (var output in Outputs)
+            {
+                Destroy(output.gameObject);
+            }
+                
+            foreach (var input in Inputs)
+            {
+                Destroy(input.gameObject);
+            }
+        }
     }
 }
