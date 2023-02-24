@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SadBrains
 {
@@ -20,7 +21,8 @@ namespace SadBrains
         [SerializeField] private List<Vector3> leftIOLocations;
         [SerializeField] private List<Vector3> rightIOLocations;
         [SerializeField] private List<Rect> disallowedRegions;
-        
+        [SerializeField] private List<Phase> gamePhases;
+
         public static GameManager Instance { get; private set; }
         
         private int _delivered;
@@ -32,8 +34,7 @@ namespace SadBrains
         public List<Vector3> RightIOLocations => rightIOLocations;
         public List<Input> Inputs { get; private set; }
         public List<Output> Outputs { get; private set; }
-
-        private List<Phase> _gamePhases;
+        
         private int _currentPhaseIdx;
 
         private void Awake()
@@ -46,27 +47,24 @@ namespace SadBrains
 
             Instance = this;
             
-            DontDestroyOnLoad(gameObject);
-            
             Inputs = new List<Input>();
             Outputs = new List<Output>();
-            _gamePhases = gameObject.GetComponentsInChildren<Phase>().ToList();
         }
 
         private void Start()
         {
-            _gamePhases[_currentPhaseIdx].SetActive();
-            _gamePhases[_currentPhaseIdx].PhaseFinished += OnPhaseFinished;
+            gamePhases[_currentPhaseIdx].SetActive();
+            gamePhases[_currentPhaseIdx].PhaseFinished += OnPhaseFinished;
         }
 
         private void OnPhaseFinished()
         {
-            _gamePhases[_currentPhaseIdx].PhaseFinished -= OnPhaseFinished;
+            gamePhases[_currentPhaseIdx].PhaseFinished -= OnPhaseFinished;
             
             _currentPhaseIdx++;
-            
-            _gamePhases[_currentPhaseIdx].SetActive();
-            _gamePhases[_currentPhaseIdx].PhaseFinished += OnPhaseFinished;
+
+            gamePhases[_currentPhaseIdx].SetActive();
+            gamePhases[_currentPhaseIdx].PhaseFinished += OnPhaseFinished;
         }
         
         public void AddIO(Output output, Input input)
@@ -74,8 +72,7 @@ namespace SadBrains
             Outputs.Add(output);
             Inputs.Add(input);
         }
-        
-        
+
         public bool InDisallowedRegion(Vector2 center, Vector2 size)
         {
             var objectRect = new Rect(center - size/2, size);
@@ -145,6 +142,16 @@ namespace SadBrains
             {
                 Destroy(input.gameObject);
             }
+        }
+
+        public void GameLost()
+        {
+            SceneManager.LoadScene("GameLost");
+        }
+
+        public void GameWon()
+        {
+            SceneManager.LoadScene("GameWon");
         }
     }
 }

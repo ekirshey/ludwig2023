@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using SadBrains.Utils;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,13 +15,24 @@ namespace SadBrains
         [SerializeField] private Button skip;
         [SerializeField] private Timer timer;
 
+        private Dictionary<OutputObjectType, int> _cootsTracker;
+
         private void Awake()
         {
             fillPhasePanel.gameObject.SetActive(false);
             skip.onClick.AddListener(() =>
             {
                 timer.ExitTimer();
-            });    
+            });
+
+            _cootsTracker = new Dictionary<OutputObjectType, int>
+            {
+                {OutputObjectType.Birman, 1},
+                {OutputObjectType.Bombay, 1},
+                {OutputObjectType.Scottish, 1},
+                {OutputObjectType.Tabby, 1},
+                {OutputObjectType.British, 1}
+            };
         }
         
         private void CreateIO()
@@ -39,11 +51,11 @@ namespace SadBrains
             GameManager.Instance.AddIO(output, input);
         }
 
-        private void FillPhaseFinished()
+        private void PhaseLost()
         {
-            Finish();
+            StartCoroutine(GameLost());
         }
-        
+
         private IEnumerator IOTimer()
         {
             while (true)
@@ -56,20 +68,39 @@ namespace SadBrains
                 yield return StartCoroutine(timer.RunTimer(ioSpawnRate));
             }
             fillPhasePanel.gameObject.SetActive(false);
-            // After all io is spawned, set the alert to meet
-            catGpt.AddHappinessAlert(FillPhaseFinished, happinessToContinue);
+        }
+        
+        private void Update()
+        {
+            if (!Active) return;
+            // Deliver at least one of each cat before counting happiness
+            if (_cootsTracker.Count == 0 && catGpt.Happiness >= happinessToContinue)
+            {
+                Finish();
+            }
+            else if (catGpt.Happiness <= 0)
+            {
+                PhaseLost();
+            }
         }
         
         public override void SetActive()
         {
             base.SetActive();
+            Input.DeliveredGoodOutputObject += OnDeliveredGoodOutputObject;
             fillPhasePanel.gameObject.SetActive(true);
             StartCoroutine(IOTimer());
         }
 
-
-
-
-
+        private void OnDeliveredGoodOutputObject(OutputObjectType obj)
+        {
+            if (!Active) return;
+            if (!_cootsTracker.ContainsKey(obj)) return;
+            _cootsTracker[obj]--;
+            if (_cootsTracker[obj] <= 0)
+            {
+                _cootsTracker.Remove(obj);
+            }
+        }
     }
 }

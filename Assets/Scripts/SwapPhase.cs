@@ -27,6 +27,20 @@ namespace SadBrains
         [SerializeField] private ScreenShakeController screenShake;
         [SerializeField] private ScreenShakeController.ScreenShakeParameters shakeParams;
         
+        private Dictionary<OutputObjectType, int> _cootsTracker;
+
+        private void Awake()
+        {
+            _cootsTracker = new Dictionary<OutputObjectType, int>
+            {
+                {OutputObjectType.Birman, 1},
+                {OutputObjectType.Bombay, 1},
+                {OutputObjectType.Scottish, 1},
+                {OutputObjectType.Tabby, 1},
+                {OutputObjectType.British, 1}
+            };
+        }
+        
         private void Start()
         {
             swapUI.gameObject.SetActive(false);
@@ -88,13 +102,44 @@ namespace SadBrains
             EnableAll();
             timer.TimerFinished -= OnTimerFinished;
             swapUI.gameObject.SetActive(false);
-            catGpt.AddHappinessAlert(Finish, happinessToContinue);
         }
-        
+
+        private void PhaseLost()
+        {
+            StartCoroutine(GameLost());
+        }
+
+        private void Update()
+        {
+            if (!Active) return;
+            
+            // Deliver one of each cat and happiness is above threshold
+            if (_cootsTracker.Count == 0 && catGpt.Happiness >= happinessToContinue)
+            {
+                Finish();
+            }
+            else if (catGpt.Happiness <= 0)
+            {
+                PhaseLost();
+            }
+        }
+
         public override void SetActive()
         {
             base.SetActive();
+            Input.DeliveredGoodOutputObject += OnDeliveredGoodOutputObject;
             StartCoroutine(SwapEvent());
+        }
+        
+        private void OnDeliveredGoodOutputObject(OutputObjectType obj)
+        {
+            if (!Active) return;
+            if (!_cootsTracker.ContainsKey(obj)) return;
+            _cootsTracker[obj]--;
+            if (_cootsTracker[obj] <= 0)
+            {
+                _cootsTracker.Remove(obj);
+            }
         }
         
         

@@ -6,7 +6,7 @@ namespace SadBrains
 {
     public class OutputObject : MonoBehaviour
     {
-        public static event Action OutputObjectDestroyed;
+        public static event Action<OutputObjectType> OutputObjectOffScreen;
         [SerializeField] private OutputObjectType type;
 
         public OutputObjectType OutputObjectType => type;
@@ -27,6 +27,7 @@ namespace SadBrains
             var screenPos = _camera.WorldToScreenPoint(transform.position);
             var onScreen = screenPos.x > 0f && screenPos.x < Screen.width && screenPos.y > 0f && screenPos.y < Screen.height;
             if (onScreen) return;
+            OutputObjectOffScreen?.Invoke(type);
             Destroy();
         }
         
@@ -61,7 +62,6 @@ namespace SadBrains
         {
             _moveTween?.Kill();
             Destroy(gameObject);
-            OutputObjectDestroyed?.Invoke();
         }
         
 

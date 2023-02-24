@@ -28,15 +28,7 @@ namespace SadBrains
 
         private void OnPause()
         {
-            _paused = true;
-            foreach (Transform child in transform)
-            {
-                var outputObject = child.GetComponent<OutputObject>();
-                if (outputObject != null)
-                {
-                    outputObject.DisableCollisions();
-                }
-            }
+            Pause();
         }
 
         private void OnResume()
@@ -57,10 +49,35 @@ namespace SadBrains
                 yield return new WaitForSeconds(spawnRate);
             }
         }
+
+        public void Pause()
+        {
+            _paused = true;
+            foreach (Transform child in transform)
+            {
+                var outputObject = child.GetComponent<OutputObject>();
+                if (outputObject != null)
+                {
+                    outputObject.DisableCollisions();
+                }
+            }
+        }
         
         public void Initialize()
         {
             StartCoroutine(Spawn());
+        }
+
+        public void CleanUp()
+        {
+            foreach(Transform child in transform)
+            {
+                var outputObject = child.GetComponent<OutputObject>();
+                if (outputObject != null)
+                {
+                    Destroy(outputObject.gameObject);
+                }
+            }
         }
     }
 }

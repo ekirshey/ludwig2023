@@ -5,7 +5,7 @@ namespace SadBrains
 {
     public class Input : MonoBehaviour
     {
-        public static event Action<OutputObjectType, OutputObjectType> DeliveredBadOutputObject;
+        public static event Action<OutputObjectType> DeliveredBadOutputObject;
         public static event Action<OutputObjectType> DeliveredGoodOutputObject;
 
         [SerializeField] private OutputObjectType expectedOutputType;
@@ -14,10 +14,10 @@ namespace SadBrains
         {
             var outputObject = col.GetComponent<OutputObject>();
             if (outputObject == null) return;
-
+            
             if (outputObject.OutputObjectType != expectedOutputType)
             {
-                DeliveredBadOutputObject?.Invoke(outputObject.OutputObjectType, expectedOutputType);
+                DeliveredBadOutputObject?.Invoke(outputObject.OutputObjectType);
             }
             else
             {

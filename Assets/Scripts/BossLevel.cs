@@ -44,5 +44,14 @@ namespace SadBrains
         {
             debris.gameObject.SetActive(true);
         }
+
+        public void CleanUp()
+        {
+            foreach (var output in outputs)
+            {
+                output.Pause();
+                output.CleanUp();
+            }
+        }
     }
 }

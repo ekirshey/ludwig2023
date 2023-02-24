@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using SadBrains.UI;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace SadBrains
         [Tooltip("Mechanics")]
         [SerializeField] private BossLevel bossLevel;
         [SerializeField] private int countdownTime;
+        [SerializeField] private int numFishToDeliver;
 
         [Tooltip("UI")]
         [SerializeField] private GameObject bossUI;
@@ -22,6 +24,7 @@ namespace SadBrains
         [SerializeField] private ItemDisplay bottomSorters;
         [SerializeField] private Placeable topFishSorter;
         [SerializeField] private Placeable bottomFishSorter;
+        [SerializeField] private HappinessDisplay happinessDisplay;
         
         [Tooltip("CatGPT")]
         [SerializeField] private Vector3 catGptStartPosition;
@@ -32,14 +35,49 @@ namespace SadBrains
         [SerializeField] private CEO ceo;
         
         [Tooltip("camera")]
-        [SerializeField] private SpriteRenderer fadeToBlack;
         [SerializeField] private float fadeTime;
         [SerializeField] private ScreenShakeController shakeController;
         [SerializeField] private ScreenShakeController.ScreenShakeParameters destructionShake;
-        
+
+        private Dictionary<OutputObjectType, int> _fishTracker;
+
         private void Awake()
         {
             bossUI.gameObject.SetActive(false);
+            _fishTracker = new Dictionary<OutputObjectType, int>
+            {
+                {OutputObjectType.PurpleFish, numFishToDeliver},
+                {OutputObjectType.YellowFish, numFishToDeliver},
+                {OutputObjectType.RedFish, numFishToDeliver}
+            };
+        }
+
+        private void OnEnable()
+        {
+            Input.DeliveredGoodOutputObject += OnFishDelivered;
+        }
+
+        private void OnDisable()
+        {
+            Input.DeliveredGoodOutputObject -= OnFishDelivered;
+        }
+
+        private void OnFishDelivered(OutputObjectType obj)
+        {
+            if (_fishTracker.ContainsKey(obj))
+            {
+                _fishTracker[obj]--;
+
+                if (_fishTracker[obj] <= 0)
+                {
+                    _fishTracker.Remove(obj);
+                }
+            }
+
+            if (_fishTracker.Count == 0)
+            {
+                StartCoroutine(GameWon());
+            }
         }
 
         private IEnumerator CatGptIntro()
@@ -61,10 +99,11 @@ namespace SadBrains
             bottomSorters.ChangeType(bottomFishSorter);
             yield return StartCoroutine(CatGptIntro());
             shakeController.Shake(destructionShake);
-            yield return fadeToBlack.DOColor(Color.black, fadeTime).WaitForCompletion();
+            yield return StartCoroutine(Fade(Color.black, fadeTime));
+            happinessDisplay.gameObject.SetActive(false);
             catGpt.transform.position = catGptStartPosition;
             bossLevel.AddDebris();
-            yield return fadeToBlack.DOColor(new Color(0,0,0,0), fadeTime).WaitForCompletion();
+            yield return StartCoroutine(Fade(new Color(0,0,0,0), fadeTime));
             
             yield return StartCoroutine( ceo.RunScript());
             
@@ -73,16 +112,16 @@ namespace SadBrains
             
             EnableAll();
 
+            bossUI.gameObject.SetActive(true);
             timer.TimerFinished += OnTimerFinished;
             StartCoroutine(timer.RunTimer(countdownTime));
-            bossUI.gameObject.SetActive(true);
         }
 
         private void OnTimerFinished()
         {
             timer.TimerFinished -= OnTimerFinished;
-            
-            // Check for win condition
+
+            StartCoroutine(_fishTracker.Count == 0 ? GameWon() : GameLost());
         }
 
         public override void SetActive()
