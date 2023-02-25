@@ -331,14 +331,15 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1727925359}
   m_Father: {fileID: 657672571}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0050049, y: -15.3}
-  m_SizeDelta: {x: 72.84, y: 57.57}
+  m_AnchoredPosition: {x: -0.000015974, y: 0.0000066757}
+  m_SizeDelta: {x: 286.97, y: 77.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &49632586
 MonoBehaviour:
@@ -370,7 +371,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 2055163485, guid: 9a2004b880874134586dc0a18c3bc598, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -404,8 +405,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2033444917, guid: 331a16428ecb2454a8624d23c4078fe0, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: -598681054, guid: 9a2004b880874134586dc0a18c3bc598, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -413,7 +414,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.2
+  m_PixelsPerUnitMultiplier: 0.16
 --- !u!222 &49632588
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -728,8 +729,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294963597
+  m_fontColor: {r: 0.5518868, g: 0.9439858, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -849,17 +850,14 @@ MonoBehaviour:
   skip: {fileID: 2129772273}
   timer: {fileID: 321274257}
   catGptStartPosition: {x: 5, y: 20, z: 0}
-  catGptPosition: {x: 5, y: 2, z: 0}
+  catGptPosition: {x: -5, y: 2, z: 0}
   catGptSpeed: 2
   speech:
-  - 'Great! Now that you are acclimated with the tools, we will begin.
-
-
-    Do note
-    that production outputs have a warm up period that you can skip by clicking the
-    button next to the tube. If you''re feeling exceptionally production, you can
-    also immediately open the next output by clicking the Skip button in the top
-    right.'
+  - Great! Now that you are acclimated with the tools, we will begin.
+  - One last thing before we start, production outputs have a warm up period that
+    you can skip by clicking the button next to the tube. If you're feeling exceptionally
+    productive, you can also immediately open the next output by clicking the Skip
+    button in the top right.
 --- !u!1 &240454307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,7 +1608,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1674,7 +1672,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &484244605
@@ -2281,7 +2279,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Time Until Destruction:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6ed303a69acd5df4cbf7a11ac96dc2c3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2855,8 +2853,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: The quick brown fox jumps over the lazy dog
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6ed303a69acd5df4cbf7a11ac96dc2c3, type: 2}
-  m_sharedMaterial: {fileID: 4273412866148346634, guid: 6ed303a69acd5df4cbf7a11ac96dc2c3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
+  m_sharedMaterial: {fileID: -5997067738042017062, guid: beff8371dab078c48aad484599f2adc7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2886,7 +2884,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -3448,7 +3446,7 @@ MonoBehaviour:
     rogue AI (Section 24.12b), we do regret the circumstances. Our R&D department
     had assured us incidents like this would no longer happen.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6ed303a69acd5df4cbf7a11ac96dc2c3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4184,7 +4182,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Until Next Output
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6ed303a69acd5df4cbf7a11ac96dc2c3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4373,7 +4371,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4437,7 +4435,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1621298272
@@ -4845,6 +4843,141 @@ MonoBehaviour:
   waitTime: 0.01
   output: {fileID: 695956952}
   actionButton: {fileID: 1754833796}
+--- !u!1 &1727925358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727925359}
+  - component: {fileID: 1727925361}
+  - component: {fileID: 1727925360}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1727925359
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727925358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 49632585}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1727925360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727925358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Begin
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
+  m_sharedMaterial: {fileID: 4273412866148346634, guid: 6ed303a69acd5df4cbf7a11ac96dc2c3, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 62.58
+  m_fontSizeBase: 62.58
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 1
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1727925361
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727925358}
+  m_CullTransparentMesh: 1
 --- !u!1 &1754833794
 GameObject:
   m_ObjectHideFlags: 0
@@ -4904,7 +5037,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4915,7 +5048,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 2055163485, guid: 9a2004b880874134586dc0a18c3bc598, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -4949,8 +5082,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1486211369, guid: 9a2004b880874134586dc0a18c3bc598, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5005,7 +5138,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -5016,7 +5149,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 2055163485, guid: 9a2004b880874134586dc0a18c3bc598, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -5050,8 +5183,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1486211369, guid: 9a2004b880874134586dc0a18c3bc598, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5151,7 +5284,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6ed303a69acd5df4cbf7a11ac96dc2c3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5857,6 +5990,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8939421179284911660, guid: 29b8f7b66987b744891a19ed8b04d381, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6148,7 +6285,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6212,7 +6349,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2040257004
@@ -6273,57 +6410,28 @@ MonoBehaviour:
   tutorialUI: {fileID: 657672570}
   level: {fileID: 1542447352}
   endTutorial: {fileID: 49632586}
-  steps:
-  - catGptStart: {x: -22, y: 1, z: 0}
-    catGptEnd: {x: -5, y: 1, z: 0}
-    moveDuration: 2
-    blinkableUI: {fileID: 0}
-    speech: 'Welcome to the C.O.O.T.S factory!
+  catGptStartPosition: {x: 5, y: 20, z: 0}
+  catGptPosition: {x: -5, y: 2, z: 0}
+  catGptSpeed: 2
+  speech:
+  - 'Welcome to the C.O.O.T.S factory!
 
 
-      This is where we create the
-      state of the art Content Optimization Organism That Scratches. '
-  - catGptStart: {x: -5, y: 1, z: 0}
-    catGptEnd: {x: -5, y: 1, z: 0}
-    moveDuration: 0
-    blinkableUI: {fileID: 0}
-    speech: "This product was created in order to help boost the viewership of struggling
-      content creators and has proven to work with great success! \n\nYou may have
-      seen our work featured prominately on a specific streamer (he picked a very
-      unimaginative name...)."
-  - catGptStart: {x: -5, y: 1, z: 0}
-    catGptEnd: {x: -5, y: 1, z: 0}
-    moveDuration: 0
-    blinkableUI: {fileID: 0}
-    speech: "Since our last employee had to be terminated rather abruptly, we're
-      going to need you to learn quickly. \n\nYour job here is take the C.O.O.T.S
-      that get output from tubes on the left adn direct them to their appropriate
-      location on the right."
-  - catGptStart: {x: -5, y: 1, z: 0}
-    catGptEnd: {x: -5, y: 1, z: 0}
-    moveDuration: 0
-    blinkableUI: {fileID: 0}
-    speech: "C.O.O.T.S will be moved through our approved list of devices located
-      in the panel on the top of your screen. \n\nMy satisfaction in your job will
-      be represented with the bar in the top left. If you fail to deliver C.O.O.T.S
-      and allow the bar to go all the way to the left, you will be terminated."
-  - catGptStart: {x: -5, y: 1, z: 0}
-    catGptEnd: {x: -5, y: 1, z: 0}
-    moveDuration: 0
-    blinkableUI: {fileID: 0}
-    speech: "Rather than explain the purpose of each device, I'll bring out a sample
-      input and output and allow you to get yourself acquanted. \n\nWhen you feel
-      ready to begin your shift, click the bottom in the top right."
-  - catGptStart: {x: -5, y: 1, z: 0}
-    catGptEnd: {x: -5, y: 1, z: 0}
-    moveDuration: 0
-    blinkableUI: {fileID: 0}
-    speech: Good luck!
-  - catGptStart: {x: -5, y: 1, z: 0}
-    catGptEnd: {x: -5, y: 20, z: 0}
-    moveDuration: 2
-    blinkableUI: {fileID: 0}
-    speech: 
+    This is where we create the state of
+    the art Content Optimization Organism That Scratches. '
+  - 'C.O.O.T.S. were created to help boost the viewership of struggling content creators
+    and are in high demand.
+
+
+    You may have seen our work featured prominately
+    on a specific streamer (he picked a very unimaginative name...).'
+  - Your job here is to get newly created C.O.O.T.S to their appropriate locations
+    using the devices found in the top panel.
+  - My satisfaction in your job will be represented with the bar in the top left.
+    If the bar goes to 0, you will be terminated.
+  - "Rather than explain the purpose of each device, I'll bring out a sample input
+    and output and allow you to get yourself acquanted. \n\nWhen you feel ready to
+    begin your shift, click the bottom in the top right. Good luck!"
 --- !u!1 &2129772271
 GameObject:
   m_ObjectHideFlags: 0

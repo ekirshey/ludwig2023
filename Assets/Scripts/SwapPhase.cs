@@ -50,10 +50,7 @@ namespace SadBrains
         {
             catGpt.transform.position = catGptStartPosition;
             yield return StartCoroutine(catGpt.MoveToTarget(catGptPosition, catGptSpeed));
-            foreach (var text in speech)
-            {
-                yield return StartCoroutine(catGpt.Speak(text));
-            }
+            yield return StartCoroutine(catGpt.Speak(speech));
             yield return StartCoroutine(catGpt.MoveToTarget(catGptStartPosition, catGptSpeed));
         }
 

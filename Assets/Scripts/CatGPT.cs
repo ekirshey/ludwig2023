@@ -17,7 +17,7 @@ namespace SadBrains
 
         public int Happiness { get; private set; }
         public int MaxHappiness => maxHappiness;
-        public delegate void SpeechFinished();
+        public bool HappinessLocked { get; set; }
 
         private void Awake()
         {
@@ -48,7 +48,7 @@ namespace SadBrains
         private void OnDeliveredGoodOutputObject(OutputObjectType obj)
         {
             if (!relevantTypes.Contains(obj)) return;
-            
+            if (HappinessLocked) return;
             Happiness += happinessGain;
 
             if (Happiness > maxHappiness)
@@ -67,28 +67,35 @@ namespace SadBrains
         
         public void DeductHappiness(int deduction)
         {
+            if (HappinessLocked) return;
             Happiness -= deduction;
         }
 
-        public IEnumerator Speak(string text)
+        public IEnumerator Speak(List<string> dialog)
         {
-            var speechFinished = false;
-            void OnSpeechFinished()
+            dialogTerminal.gameObject.SetActive(true);
+            foreach (var text in dialog)
             {
-                speechFinished = true;
+                var speechFinished = false;
+
+                void OnSpeechFinished()
+                {
+                    speechFinished = true;
+                }
+
+                dialogTerminal.OnNext += OnSpeechFinished;
+                dialogTerminal.SetText(text);
+                yield return new WaitUntil(() => speechFinished);
+                dialogTerminal.OnNext -= OnSpeechFinished;
             }
 
-            dialogTerminal.OnNext += OnSpeechFinished;
-            dialogTerminal.SetText(text);
-            yield return new WaitUntil(() => speechFinished);
-            dialogTerminal.OnNext -= OnSpeechFinished;
+            dialogTerminal.gameObject.SetActive(false);
         }
 
         public IEnumerator MoveToTarget(Vector3 destination, float moveDuration)
         {
             yield return transform.DOMove(destination, moveDuration).WaitForCompletion();
         }
-        
 
     }
 }

@@ -1,7 +1,6 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
-using SadBrains.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,59 +8,28 @@ namespace SadBrains
 {
     public class Tutorial : Phase
     {
-        [Serializable]
-        public class CatGptStep 
-        {
-            public Vector3 catGptStart;
-            public Vector3 catGptEnd;
-            public float moveDuration;
-            public BlinkableUI blinkableUI;
-            [TextArea(3,10)]
-            public string speech;
-        }
-
         [SerializeField] private GameObject tutorialUI;
         [SerializeField] private TutorialLevel level;
         [SerializeField] private Button endTutorial;
-        [SerializeField] private List<CatGptStep> steps;
+        [SerializeField] private Vector3 catGptStartPosition;
+        [SerializeField] private Vector3 catGptPosition;
+        [SerializeField] private float catGptSpeed;
+        [TextArea(3,10)]
+        [SerializeField] private List<string> speech;
 
-        private int _currentStepIdx;
-        
-        private IEnumerator ExecuteStep(CatGptStep step)
+        private IEnumerator RunTutorial()
         {
-            catGpt.transform.position = step.catGptStart;
-            yield return StartCoroutine(catGpt.MoveToTarget(step.catGptEnd, step.moveDuration));
-
-            if (step.blinkableUI != null)
-            {
-                step.blinkableUI.Blink();
-            }
-
-            if (step.speech.Length > 0)
-            {
-                yield return StartCoroutine(catGpt.Speak(step.speech));
-            }
-
-            if (step.blinkableUI != null)
-            {
-                step.blinkableUI.EndBlink();
-            }
+            catGpt.transform.position = catGptStartPosition;
+            yield return StartCoroutine(catGpt.MoveToTarget(catGptPosition, catGptSpeed));
+            yield return StartCoroutine(catGpt.Speak(speech));
+            yield return StartCoroutine(catGpt.MoveToTarget(catGptStartPosition, catGptSpeed));
             
-            _currentStepIdx++;
-            if (_currentStepIdx >= steps.Count)
+            yield return StartCoroutine( level.InitializeIO());
+            endTutorial.onClick.AddListener(() =>
             {
-                yield return StartCoroutine( level.InitializeIO());
-                endTutorial.onClick.AddListener(() =>
-                {
-                    StartCoroutine(CleanUp());
-                });
-                tutorialUI.gameObject.SetActive(true);
-            }
-            else
-            {
-                StartCoroutine(ExecuteStep(steps[_currentStepIdx]));
-            }
-            
+                StartCoroutine(CleanUp());
+            });
+            tutorialUI.gameObject.SetActive(true);
         }
 
         private IEnumerator CleanUp()
@@ -75,9 +43,8 @@ namespace SadBrains
         public override void SetActive()
         {
             base.SetActive();
-            _currentStepIdx = 0;
-
-            StartCoroutine(ExecuteStep(steps[_currentStepIdx]));
+            catGpt.HappinessLocked = true;
+            StartCoroutine(RunTutorial());
         }
         
     }

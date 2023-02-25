@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 41e66eee74cfd6d499676557d4df3e3d
+guid: 7bbc56858e1758346a466ae7f93a5a9c
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Kenney Future Narrow
+  - Kenney Mini
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

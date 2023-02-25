@@ -36,7 +36,6 @@ namespace SadBrains
             if (_textFinished)
             {
                 OnNext?.Invoke();
-                gameObject.SetActive(false);
             }
             else
             {
@@ -74,7 +73,6 @@ namespace SadBrains
             _textFinished = false;
             var buttonText = actionButton.GetComponentInChildren<TMP_Text>();
             buttonText.text = "Skip";
-            gameObject.SetActive(true);
             output.text = text;
             StartCoroutine(RevealCharacters(output));
         }
