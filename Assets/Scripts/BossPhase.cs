@@ -59,6 +59,12 @@ namespace SadBrains
             Input.DeliveredGoodOutputObject -= OnFishDelivered;
         }
 
+        private IEnumerator Win()
+        {
+            yield return StartCoroutine(ceo.RunScript());
+            yield return StartCoroutine(GameWon());
+        }
+        
         private void OnFishDelivered(OutputObjectType obj)
         {
             if (_fishTracker.ContainsKey(obj))
@@ -73,7 +79,7 @@ namespace SadBrains
 
             if (_fishTracker.Count == 0)
             {
-                StartCoroutine(GameWon());
+                StartCoroutine(Win());
             }
         }
 
