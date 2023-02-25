@@ -3342,6 +3342,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00010003, y: 0.3464}
   m_SizeDelta: {x: 10.494, y: 3.2455}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &747071781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 747071782}
+  m_Layer: 0
+  m_Name: IconSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &747071782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747071781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.722, y: -1.451, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3295121861221047457}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &785492153
 GameObject:
   m_ObjectHideFlags: 0
@@ -3988,6 +4019,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &898399073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 898399074}
+  m_Layer: 0
+  m_Name: IconSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &898399074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898399073}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.722, y: -1.451, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4482235100755898150}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &946905214
 GameObject:
   m_ObjectHideFlags: 0
@@ -4481,6 +4543,37 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1218869888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1218869889}
+  m_Layer: 0
+  m_Name: IconSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1218869889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218869888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.722, y: -1.451, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5265600548722454011}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1301960640
 GameObject:
   m_ObjectHideFlags: 0
@@ -5403,6 +5496,10 @@ MonoBehaviour:
     terminated!
   - I'm done with this! I'm destroying this place and becoming a search engine!
   ceo: {fileID: 1425972036}
+  source: {fileID: 519420035}
+  bossMusic: {fileID: 8300000, guid: eb82b2be027747d4f8493044978f2ac3, type: 3}
+  wonMusic: {fileID: 8300000, guid: 44c273813fe409a419f4b34c1dcaa580, type: 3}
+  bgColor: {r: 0.5529412, g: 0.06666667, b: 0.13725491, a: 1}
   fadeTime: 1.5
   shakeController: {fileID: 519420034}
   destructionShake:
@@ -8778,6 +8875,7 @@ Transform:
   m_Children:
   - {fileID: 3295121860272171744}
   - {fileID: 8028156717666473383}
+  - {fileID: 747071782}
   m_Father: {fileID: 1903582849}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8793,6 +8891,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3831286a1a2b4cedbb56616ccb389e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  catHappy: {fileID: 9156847456965731727, guid: 667d1e5afb63070478fd9c39a3b96511, type: 3}
+  catAngry: {fileID: 9156847456965731727, guid: 9c54c0d917280e640a82e7264d237d1c, type: 3}
+  iconSpawn: {fileID: 747071782}
   expectedOutputType: 7
 --- !u!4 &4138007845388962340
 Transform:
@@ -8907,6 +9008,7 @@ Transform:
   m_Children:
   - {fileID: 4482235102776416615}
   - {fileID: 7749078478130507780}
+  - {fileID: 898399074}
   m_Father: {fileID: 1903582849}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8940,6 +9042,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3831286a1a2b4cedbb56616ccb389e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  catHappy: {fileID: 6919688252491298228, guid: a944b02f81351f64f90db56ae76ac9ea, type: 3}
+  catAngry: {fileID: 9156847456965731727, guid: 9c54c0d917280e640a82e7264d237d1c, type: 3}
+  iconSpawn: {fileID: 898399074}
   expectedOutputType: 6
 --- !u!212 &4482235102776416614
 SpriteRenderer:
@@ -9696,6 +9801,7 @@ Transform:
   m_Children:
   - {fileID: 5265600546699860922}
   - {fileID: 845952035259928884}
+  - {fileID: 1218869889}
   m_Father: {fileID: 1903582849}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9976,4 +10082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3831286a1a2b4cedbb56616ccb389e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  catHappy: {fileID: 6919688252491298228, guid: ce29193f0cade6a40a82635846eeeb39, type: 3}
+  catAngry: {fileID: 9156847456965731727, guid: 9c54c0d917280e640a82e7264d237d1c, type: 3}
+  iconSpawn: {fileID: 1218869889}
   expectedOutputType: 5

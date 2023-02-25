@@ -117,6 +117,7 @@ Transform:
   - {fileID: 373605579934489785}
   - {fileID: 7147086057429783131}
   - {fileID: 5805430781631854042}
+  - {fileID: 1897840896553935802}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -132,6 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3831286a1a2b4cedbb56616ccb389e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  catHappy: {fileID: 6919688252491298228, guid: 7bbe3075b3547dd41987c9db818627de, type: 3}
+  catAngry: {fileID: 9156847456965731727, guid: 9c54c0d917280e640a82e7264d237d1c, type: 3}
+  iconSpawn: {fileID: 1897840896553935802}
   expectedOutputType: 3
 --- !u!61 &3513716116942456121
 BoxCollider2D:
@@ -262,6 +266,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7319868708780838816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1897840896553935802}
+  m_Layer: 0
+  m_Name: IconSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1897840896553935802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7319868708780838816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.722, y: -1.451, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 373605580881308408}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8475767121201136299
 GameObject:
   m_ObjectHideFlags: 0

@@ -288,7 +288,6 @@ MonoBehaviour:
   skipButton: {fileID: 608737651434864788}
   animator: {fileID: 1327012723112033732}
   canvas: {fileID: 6951279558227891417}
-  type: 0
 --- !u!1 &6164371275126742878
 GameObject:
   m_ObjectHideFlags: 0

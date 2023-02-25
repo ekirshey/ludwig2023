@@ -22,7 +22,7 @@ namespace SadBrains
         [SerializeField] private Placeable topFishSorter;
         [SerializeField] private Placeable bottomFishSorter;
         [SerializeField] private HappinessDisplay happinessDisplay;
-        
+
         [Tooltip("CatGPT")]
         [SerializeField] private Vector3 catGptStartPosition;
         [SerializeField] private Vector3 catGptPosition;
@@ -30,8 +30,12 @@ namespace SadBrains
         [SerializeField] private List<string> preDestructionText;
         [SerializeField] private List<string> speech;
         [SerializeField] private CEO ceo;
-        
-        [Tooltip("camera")]
+
+        [Tooltip("camera")] 
+        [SerializeField] private AudioSource source;
+        [SerializeField] private AudioClip bossMusic;
+        [SerializeField] private AudioClip wonMusic;
+        [SerializeField] private Color bgColor;
         [SerializeField] private float fadeTime;
         [SerializeField] private ScreenShakeController shakeController;
         [SerializeField] private ScreenShakeController.ScreenShakeParameters destructionShake;
@@ -65,6 +69,8 @@ namespace SadBrains
             timer.TimerFinished -= OnTimerFinished;
             timer.ExitTimer();
             bossUI.gameObject.SetActive(false);
+            source.clip = wonMusic;
+            source.Play();
             yield return StartCoroutine(ceo.WonScript());
             yield return StartCoroutine(GameWon());
         }
@@ -108,6 +114,9 @@ namespace SadBrains
             happinessDisplay.gameObject.SetActive(false);
             catGpt.transform.position = catGptStartPosition;
             bossLevel.AddDebris();
+            source.clip = bossMusic;
+            source.Play();
+            Camera.main.backgroundColor = bgColor;
             yield return StartCoroutine(Fade(new Color(0,0,0,0), fadeTime));
             
             yield return StartCoroutine( ceo.RunScript());
