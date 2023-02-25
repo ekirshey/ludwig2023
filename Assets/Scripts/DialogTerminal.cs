@@ -77,5 +77,10 @@ namespace SadBrains
             StartCoroutine(RevealCharacters(output));
         }
         
+        public void Clear()
+        {
+            output.text = "";
+        }
+        
     }
 }

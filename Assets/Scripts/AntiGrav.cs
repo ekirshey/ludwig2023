@@ -40,7 +40,7 @@ namespace SadBrains
             _sequence = DOTween.Sequence();
             _sequence.Append(outputObject.transform.DOMove(bottom.Center, 0.1f))
                 .Append(outputObject.transform.DOMove(top.Center, 1.0f))
-                .Append(outputObject.transform.DOMoveX(outputObject.transform.position.x + 3, 0.1f))
+                .Append(outputObject.transform.DOMoveX(outputObject.transform.position.x + 3.5f, 0.1f))
                 .AppendCallback(() =>
                 {
                     outputObject.EnableRigidBody();

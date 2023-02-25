@@ -37,6 +37,7 @@ namespace SadBrains
         [SerializeField] private ScreenShakeController.ScreenShakeParameters destructionShake;
 
         private Dictionary<OutputObjectType, int> _fishTracker;
+        private bool _gameOver;
 
         private void Awake()
         {
@@ -61,12 +62,16 @@ namespace SadBrains
 
         private IEnumerator Win()
         {
-            yield return StartCoroutine(ceo.RunScript());
+            timer.TimerFinished -= OnTimerFinished;
+            timer.ExitTimer();
+            bossUI.gameObject.SetActive(false);
+            yield return StartCoroutine(ceo.WonScript());
             yield return StartCoroutine(GameWon());
         }
         
         private void OnFishDelivered(OutputObjectType obj)
         {
+            if (_gameOver) return;
             if (_fishTracker.ContainsKey(obj))
             {
                 _fishTracker[obj]--;
@@ -77,10 +82,9 @@ namespace SadBrains
                 }
             }
 
-            if (_fishTracker.Count == 0)
-            {
-                StartCoroutine(Win());
-            }
+            if (_fishTracker.Count != 0) return;
+            _gameOver = true;
+            StartCoroutine(Win());
         }
 
         private IEnumerator CatGptIntro()

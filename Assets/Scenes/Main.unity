@@ -2056,9 +2056,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.055555556
-    width: 0.33333334
-    height: 0.3333333
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -3105,11 +3105,11 @@ MonoBehaviour:
     width: 43.4
     height: 6.8
   gamePhases:
+  - {fileID: 1615740471}
   - {fileID: 2048209442}
   - {fileID: 170207608}
   - {fileID: 466692395}
   - {fileID: 348865012}
-  - {fileID: 1615740471}
 --- !u!1 &695956951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,7 +3444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8b53cb46e44af1b13d4925df604dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 2290412975780968476, guid: 497241f4646121c4aabbe50d2461f010, type: 3}
+  itemPrefab: {fileID: 2290412975780968476, guid: 31c1c3177ccdfcc4f943b7d0d3a64108, type: 3}
 --- !u!114 &823631381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4845,6 +4845,10 @@ MonoBehaviour:
     You must route these bombs to their appropriately colored inputs in order to
     destroy the AI and preserve the factory.
   - We estimate you have roughly 90 seconds to do so. Good luck.
+  wonSpeech:
+  - 'Well done! You''ve saved the factory! '
+  - The repair crews should be there soon, plesae assist in anyway possible. Also,
+    you will not be granted any additional pay for your services today. Thank you.
 --- !u!4 &1425972037
 Transform:
   m_ObjectHideFlags: 0
@@ -7097,8 +7101,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960790406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.73, y: 10.56, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 9.989, y: 10.852, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

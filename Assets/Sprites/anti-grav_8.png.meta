@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 15c7fdd319e69c640a6134c1389cc210
+guid: 6e0dc7abb2189d84783adbb7d9baf575
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: anti-grav_0
+      name: anti-grav_8_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 96
+        height: 160
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e27234e56d655154f8887618d8c3773d
-      internalID: -622539314
+      spriteID: a82d3dd221209fe4081aba363f90a7e0
+      internalID: 1015151331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: anti-grav_1
+      name: anti-grav_8_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
-        height: 96
+        height: 160
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,20 +154,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c72bccdee6c1ab4aa3032f9f8d3092d
-      internalID: 1255267651
+      spriteID: ef6ad7040b1a2bd46b1315de48e1b79e
+      internalID: 137170764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: anti-grav_2
+      name: anti-grav_8_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
-        height: 96
+        height: 160
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cf3983c91698e44995971d47002b9ec
-      internalID: 1306175083
+      spriteID: 2e42acc2ca85c4d4d930b5f2ef1d0033
+      internalID: 389934105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: anti-grav_3
+      name: anti-grav_8_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
-        height: 96
+        height: 160
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e4c4cc1b24db43419a6332b5fb27979
-      internalID: -1013500309
+      spriteID: abcba8a1aff5fe045ad5ba0e83d3ea8b
+      internalID: 1561716305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: anti-grav_4
+      name: anti-grav_8_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 32
-        height: 96
+        height: 160
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,8 +217,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7cd9d120879d8d4cbc7c60c887ff30b
-      internalID: 1239368168
+      spriteID: d8eb644b25071fb42b531789e64a02d7
+      internalID: -44040505
       vertices: []
       indices: 
       edges: []
@@ -234,11 +234,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      anti-grav_4: 1239368168
-      anti-grav_2: 1306175083
-      anti-grav_0: -622539314
-      anti-grav_3: -1013500309
-      anti-grav_1: 1255267651
+      anti-grav_8_3: 1561716305
+      anti-grav_8_2: 389934105
+      anti-grav_8_4: -44040505
+      anti-grav_8_0: 1015151331
+      anti-grav_8_1: 137170764
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
