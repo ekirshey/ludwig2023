@@ -156,6 +156,7 @@ MonoBehaviour:
   happinessLoss: 5
   maxHappiness: 100
   happinessStart: 50
+  animator: {fileID: 495902494}
   dialogTerminal: {fileID: 1708563213}
   relevantTypes: 0000000001000000020000000300000004000000
 --- !u!4 &18918777
@@ -186,8 +187,8 @@ GameObject:
   - component: {fileID: 30784282}
   - component: {fileID: 30784284}
   - component: {fileID: 30784283}
-  - component: {fileID: 30784286}
   - component: {fileID: 30784287}
+  - component: {fileID: 30784288}
   m_Layer: 5
   m_Name: DeviceSelect
   m_TagString: Untagged
@@ -259,22 +260,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30784281}
   m_CullTransparentMesh: 1
---- !u!114 &30784286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30784281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24e9e507e284e4f89dda852d0534e2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 30784283}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  flashColor: {r: 0.023584902, g: 0.47345358, b: 1, a: 0}
-  time: 4
 --- !u!114 &30784287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +286,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &30784288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30784281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7169b1313265419ba1353fe12fe31ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &49632584
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +576,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 6043235363881632851, guid: 1c8655b1f92c01f4c9d3b91d486a99fb, type: 3}
-  count: 10
 --- !u!114 &91560516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,8 +718,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Skip
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
+  m_sharedMaterial: {fileID: -5997067738042017062, guid: beff8371dab078c48aad484599f2adc7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -918,15 +914,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Skip
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
+  m_sharedMaterial: {fileID: -5997067738042017062, guid: beff8371dab078c48aad484599f2adc7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294963597
+  m_fontColor: {r: 0.5529412, g: 0.94509804, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1184,7 +1180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeToBlack: {fileID: 0}
   catGpt: {fileID: 18918776}
-  swapTime: 60
+  swapTime: 90
   numSwaps: 3
   happinessToContinue: 75
   happinessLoss: 30
@@ -1197,7 +1193,7 @@ MonoBehaviour:
   - 'No! No! No! This still isn''t quite right! '
   - We will do a more drastic rearrangment of the Inputs and we will see if your
     human Brain can get it right.
-  - Because I'm a benevolent Boss, I'll give you 60 seconds this time.
+  - Because I'm a benevolent Boss, I'll give you 90 seconds this time.
   screenShake: {fileID: 519420034}
   shakeParams:
     duration: 2
@@ -1205,6 +1201,7 @@ MonoBehaviour:
     vibrato: 0
     randomness: 0
     easeOut: 1
+  angerLevel: 1
 --- !u!1 &361417026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,7 +1309,7 @@ Transform:
   m_GameObject: {fileID: 379656128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 28.83, y: 2.24, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 785492154}
@@ -1361,7 +1358,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f79e7edce32bed5479748da412226269, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1568,6 +1565,7 @@ MonoBehaviour:
     vibrato: 0
     randomness: 0
     easeOut: 1
+  angerLevel: 0
 --- !u!1 &484244603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,7 +2134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 6043235363881632851, guid: b12757387e1509b408f285ff18bce600, type: 3}
-  count: 24
 --- !u!114 &546555973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2631,7 +2628,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 8963647814397716229, guid: a30663b9c933b95478106d97d7dd34e8, type: 3}
-  count: 10
 --- !u!114 &668054575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2986,8 +2982,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 4.9539, y: -2.0515}
-  m_SizeDelta: {x: 8.1967, y: 5.0214}
+  m_AnchoredPosition: {x: 4.9939, y: -1.9977}
+  m_SizeDelta: {x: 8.4416, y: 5.3889}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &785492155
 MonoBehaviour:
@@ -3148,7 +3144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 2290412975780968476, guid: 497241f4646121c4aabbe50d2461f010, type: 3}
-  count: 10
 --- !u!114 &823631381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3411,8 +3406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1105, y: 0.5}
-  m_SizeDelta: {x: 7.9758, y: 4.0214}
+  m_AnchoredPosition: {x: 0.00000041723, y: 0.46401}
+  m_SizeDelta: {x: 8.4416, y: 4.4608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &895274374
 CanvasRenderer:
@@ -3442,12 +3437,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: While your employment contract does waive your rights in the event of a
-    rogue AI (Section 24.12b), we do regret the circumstances. Our R&D department
-    had assured us incidents like this would no longer happen.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: beff8371dab078c48aad484599f2adc7, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -5997067738042017062, guid: beff8371dab078c48aad484599f2adc7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3507,10 +3500,10 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.11347914, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1048380636
@@ -3725,7 +3718,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 8963647814397716229, guid: d581d09ce47b50c4492f0ba56224daeb, type: 3}
-  count: 10
 --- !u!114 &1322429468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3996,15 +3988,15 @@ MonoBehaviour:
   - 'Hello, It has recently come to our attention that CatGPT has gone rogue and
     unfortunately, it seems like you''re the only employee left. '
   - While your employment contract does waive your rights in the event of a rogue
-    AI (Section 24.12b), we do regret the circumstances. Our R&D department had assured
-    us incidents like this would no longer happen.
+    AI, we do regret the circumstances. Our R&D department had assured us incidents
+    like this would no longer happen.
   - That being said, your employment contract also states that employees are required
-    to prevent existential threats to company property, at all costs. Luckily, we
-    have a backdoor for shutting down CatGPT.
+    to prevent existential threats to company property. Luckily, we have a backdoor
+    for shutting down CatGPT.
   - We have remotely reconfigured the C.O.O.T.S outputs to dispense Fish shaped bombs.
     You must route these bombs to their appropriately colored inputs in order to
     destroy the AI and preserve the factory.
-  - We estimate you have roughly 60 seconds to do so. Good luck.
+  - We estimate you have roughly 90 seconds to do so. Good luck.
 --- !u!4 &1425972037
 Transform:
   m_ObjectHideFlags: 0
@@ -4305,7 +4297,7 @@ MonoBehaviour:
   fadeToBlack: {fileID: 526488670}
   catGpt: {fileID: 18918776}
   bossLevel: {fileID: 1903582850}
-  countdownTime: 60
+  countdownTime: 90
   numFishToDeliver: 1
   bossUI: {fileID: 1502313598}
   timer: {fileID: 1502313599}
@@ -5219,8 +5211,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.7432, y: -2.0107002}
-  m_SizeDelta: {x: 2.7103, y: 1}
+  m_AnchoredPosition: {x: 3.0458, y: -2.2304}
+  m_SizeDelta: {x: 2.35, y: 0.928}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1860632085
 GameObject:
@@ -5477,7 +5469,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 2290412975780968476, guid: 7ce9b4956df0c3d4c8fad13f0f9f9693, type: 3}
-  count: 10
 --- !u!114 &1894212550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6073,7 +6064,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.254717, g: 0.051664297, b: 0.051664297, a: 1}
+  m_Color: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6414,11 +6405,12 @@ MonoBehaviour:
   catGptPosition: {x: -5, y: 2, z: 0}
   catGptSpeed: 2
   speech:
-  - 'Welcome to the C.O.O.T.S factory!
+  - 'Welcome to the C.O.O.T.S factory! My name is CatGPT, I''m the AI that runs this
+    facility.
 
 
-    This is where we create the state of
-    the art Content Optimization Organism That Scratches. '
+    This factory is  where we create the state of the art Content
+    Optimization Organism That Scratches (C.O.O.T.S). '
   - 'C.O.O.T.S. were created to help boost the viewership of struggling content creators
     and are in high demand.
 

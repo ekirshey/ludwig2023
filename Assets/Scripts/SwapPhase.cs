@@ -26,6 +26,7 @@ namespace SadBrains
         [SerializeField] private List<string> speech;
         [SerializeField] private ScreenShakeController screenShake;
         [SerializeField] private ScreenShakeController.ScreenShakeParameters shakeParams;
+        [SerializeField] private int angerLevel;
         
         private Dictionary<OutputObjectType, int> _cootsTracker;
 
@@ -49,6 +50,7 @@ namespace SadBrains
         private IEnumerator CatGptIntro()
         {
             catGpt.transform.position = catGptStartPosition;
+            catGpt.SetAnger(angerLevel);
             yield return StartCoroutine(catGpt.MoveToTarget(catGptPosition, catGptSpeed));
             yield return StartCoroutine(catGpt.Speak(speech));
             yield return StartCoroutine(catGpt.MoveToTarget(catGptStartPosition, catGptSpeed));

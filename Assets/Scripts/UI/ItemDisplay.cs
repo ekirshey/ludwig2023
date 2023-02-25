@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿
 using SadBrains.Utils;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,50 +7,13 @@ namespace SadBrains.UI
     public class ItemDisplay : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         [SerializeField] private Placeable itemPrefab;
-        [SerializeField] private int count;
-
-        private Stack<Placeable> Items { get; set; }
-        private Placeable _currentItem;
-
-        private void Init()
-        {
-            Items = new Stack<Placeable>();
-            for (var i = 0; i < count; i++)
-            {
-                var device = Instantiate(itemPrefab);
-                device.gameObject.SetActive(false);
-                Items.Push(device);
-            }    
-        }
         
-        private void Awake()
-        {
-            Init();
-        }
-
-        private void OnEnable()
-        {
-            Trash.DeletePlaceable += OnDelete;
-        }
-
-        private void OnDisable()
-        {
-            Trash.DeletePlaceable -= OnDelete;
-        }
-
-        private void OnDelete(Placeable placeable)
-        {
-            placeable.gameObject.SetActive(false);
-            // TODO this check doesnt seem to work?
-            if (placeable == _currentItem)
-            {
-                Items.Push(placeable);
-            }
-        }
+        private Placeable _currentItem;
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            _currentItem = Items.Pop();
+            _currentItem = Instantiate(itemPrefab);
+            _currentItem.gameObject.SetActive(false);
             _currentItem.StartMove();
         }
 
@@ -59,13 +22,7 @@ namespace SadBrains.UI
             _currentItem.EndMove();
             if (!_currentItem.Place())
             {
-                _currentItem.gameObject.SetActive(false);
-                Items.Push(_currentItem);
-            }
-
-            if (Items.Count == 0)
-            {
-                Destroy(gameObject);
+                _currentItem.Destroy();
             }
         }
 
@@ -90,13 +47,7 @@ namespace SadBrains.UI
 
         public void ChangeType(Placeable placeable)
         {
-            foreach (var item in Items)
-            {
-                Destroy(item.gameObject);
-            }
-            Items.Clear();
             itemPrefab = placeable;
-            Init();
         }
     }
 }

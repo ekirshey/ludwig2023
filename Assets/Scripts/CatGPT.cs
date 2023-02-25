@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -12,8 +11,12 @@ namespace SadBrains
         [SerializeField] private int happinessLoss;
         [SerializeField] private int maxHappiness;
         [SerializeField] private int happinessStart;
+        [SerializeField] private Animator animator;
         [SerializeField] private DialogTerminal dialogTerminal;
         [SerializeField] private List<OutputObjectType> relevantTypes;
+        private static readonly int Boss = Animator.StringToHash("Boss");
+        private static readonly int Angrier = Animator.StringToHash("Angrier");
+        private static readonly int Angry = Animator.StringToHash("Angry");
 
         public int Happiness { get; private set; }
         public int MaxHappiness => maxHappiness;
@@ -95,6 +98,22 @@ namespace SadBrains
         public IEnumerator MoveToTarget(Vector3 destination, float moveDuration)
         {
             yield return transform.DOMove(destination, moveDuration).WaitForCompletion();
+        }
+
+        public void SetAnger(int value)
+        {
+            switch (value)
+            {
+                case 0:
+                    animator.SetTrigger(Angry);
+                    break;
+                case 1:
+                    animator.SetTrigger(Angrier);
+                    break;
+                case 2:
+                    animator.SetTrigger(Boss);
+                    break;
+            }
         }
 
     }

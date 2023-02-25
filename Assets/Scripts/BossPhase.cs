@@ -79,6 +79,7 @@ namespace SadBrains
 
         private IEnumerator CatGptIntro()
         {
+            catGpt.SetAnger(2);
             catGpt.transform.position = catGptStartPosition;
             yield return StartCoroutine(catGpt.MoveToTarget(catGptPosition, catGptSpeed));
             yield return StartCoroutine(catGpt.Speak(speech));

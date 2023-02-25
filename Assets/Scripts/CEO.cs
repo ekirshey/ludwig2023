@@ -16,6 +16,7 @@ namespace SadBrains
         public IEnumerator RunScript()
         {
             gameObject.SetActive(true);
+            terminal.gameObject.SetActive(true);
             yield return terminalRenderer.DOColor(new Color(255, 255, 255, 255), fadeInSpeed).WaitForCompletion();
             terminal.OnNext += OnSpeechFinished;
             var speechFinished = false;
@@ -31,7 +32,7 @@ namespace SadBrains
                 yield return new WaitUntil(() => speechFinished);
                 
             }
-            
+            terminal.gameObject.SetActive(false);
             terminal.OnNext -= OnSpeechFinished;
         }
 

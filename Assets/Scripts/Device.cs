@@ -34,5 +34,6 @@ namespace SadBrains
             }
             return !CollisionChecker.IsColliding(gameObject, Collider2D.bounds.center, Collider2D.size, layerMask);
         }
+        
     }
 }

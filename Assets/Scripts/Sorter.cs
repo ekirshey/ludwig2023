@@ -12,10 +12,9 @@ namespace SadBrains
         [SerializeField] private bool isTopSort;
         [SerializeField] private Transform topTarget;
         [SerializeField] private Transform bottomTarget;
-        [SerializeField] private float moveThroughTime;
         
         private OutputObjectType _allowedObjectType;
-        
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -31,7 +30,6 @@ namespace SadBrains
             topSort.OutputObjectEntered -= MoveOutputObject;
             bottomSort.OutputObjectEntered -= MoveOutputObject;
         }
-        
         
         private void OnOutputObjectTypeChanged(OutputObjectType type)
         {
@@ -61,13 +59,22 @@ namespace SadBrains
         public override void DisableCollision()
         {
             base.DisableCollision();
-            spriteRenderer.DOFade(0.5f, 0.1f);
+            var color = spriteRenderer.color;
+            color.a *= 0.5f;
+            spriteRenderer.color = color;
         }
 
         public override void EnableCollision()
         {
             base.EnableCollision();
-            spriteRenderer.DOFade(1.0f, 0.1f);
+            var color = spriteRenderer.color;
+            color.a *= 2f;
+            spriteRenderer.color = color;
+        }
+        
+        public override void Destroy()
+        {
+            Destroy(gameObject);
         }
     }
 }

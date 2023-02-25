@@ -6,19 +6,20 @@ namespace SadBrains
 {
     public class OutputObject : MonoBehaviour
     {
+        public event Action Destroyed;
         public static event Action<OutputObjectType> OutputObjectOffScreen;
         [SerializeField] private OutputObjectType type;
 
         public OutputObjectType OutputObjectType => type;
+        public Rigidbody2D Rigidbody2D { get; private set; }
         private BoxCollider2D _collider;
-        private Rigidbody2D _rigidbody2D;
         private Camera _camera;
         private Tween _moveTween;
         
         private void Awake()
         {
             _collider = GetComponent<BoxCollider2D>();
-            _rigidbody2D = GetComponent<Rigidbody2D>();
+            Rigidbody2D = GetComponent<Rigidbody2D>();
             _camera = Camera.main;
         }
         
@@ -34,18 +35,18 @@ namespace SadBrains
         public void ResetVelocity()
         {
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            _rigidbody2D.angularVelocity = 0.0f;
-            _rigidbody2D.velocity = new Vector2();
+            Rigidbody2D.angularVelocity = 0.0f;
+            Rigidbody2D.velocity = new Vector2();
         }
         
         public void DisableRigidBody()
         {
-            _rigidbody2D.isKinematic = true;
+            Rigidbody2D.isKinematic = true;
         }
 
         public void EnableRigidBody()
         {
-            _rigidbody2D.isKinematic = false;
+            Rigidbody2D.isKinematic = false;
         }
         
         public void DisableCollisions()
@@ -60,6 +61,7 @@ namespace SadBrains
         
         public void Destroy()
         {
+            Destroyed?.Invoke();
             _moveTween?.Kill();
             Destroy(gameObject);
         }

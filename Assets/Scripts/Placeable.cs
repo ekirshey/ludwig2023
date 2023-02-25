@@ -8,9 +8,7 @@ namespace SadBrains
     {
         public static event Action<Placeable> DragStart;
         public static event Action<Placeable> DragEnd;
-
-        public event Action MoveStart;
-
+        
         protected BoxCollider2D Collider2D { get; set; }
 
         public bool IsMoving { get; private set; }
@@ -52,19 +50,16 @@ namespace SadBrains
         {
             if (IsMoving) return;
             IsMoving = true;
-            MoveStart?.Invoke(); //temp
             DragStart?.Invoke(this);
             DisableCollision();
         }
 
         public void EndMove()
         {
-            if (IsMoving)
-            {
-                IsMoving = false;
-                DragEnd?.Invoke(this);
-                EnableCollision();
-            }
+            if (!IsMoving) return;
+            IsMoving = false;
+            DragEnd?.Invoke(this);
+            EnableCollision();
         }
         
         public abstract bool Place();
@@ -78,5 +73,7 @@ namespace SadBrains
         {
             Collider2D.enabled = true;
         }
+
+        public abstract void Destroy();
     }
 }

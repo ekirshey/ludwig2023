@@ -45,12 +45,14 @@ namespace SadBrains
 
         private void OnDragEnd(Placeable placeable)
         {
+            if (_currentPlaceable == null) return;
+
             spriteRenderer.color = _hiddenColor;
             
             var worldPos = MouseHelpers.MouseWorldPosition();
 
             if (!_boxCollider2D.bounds.Contains(new Vector3(worldPos.x, worldPos.y, 0))) return;
-
+            
             DeletePlaceable?.Invoke(_currentPlaceable);
             _currentPlaceable = null;
         }

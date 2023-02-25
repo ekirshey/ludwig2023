@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 6043235365557528414}
   - component: {fileID: 7321191644833123475}
   m_Layer: 7
-  m_Name: Model
+  m_Name: BeltModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
