@@ -299,9 +299,9 @@ MonoBehaviour:
   bottomDown: {fileID: 6058674982462313221}
   bottomDownHeadshot: {fileID: 6846982057605124458}
   sprites:
-  - {fileID: -1570025055, guid: c697f5f8d167a8d4980991d451d5c59d, type: 3}
-  - {fileID: 1908326856, guid: c697f5f8d167a8d4980991d451d5c59d, type: 3}
-  - {fileID: 1101074221, guid: c697f5f8d167a8d4980991d451d5c59d, type: 3}
+  - {fileID: 665447472, guid: bea0c65ebd9dcdc419a3a7a4572ea949, type: 3}
+  - {fileID: -926521803, guid: bea0c65ebd9dcdc419a3a7a4572ea949, type: 3}
+  - {fileID: -1991985873, guid: bea0c65ebd9dcdc419a3a7a4572ea949, type: 3}
   minIdx: 5
   maxIdx: 7
 --- !u!61 &2524557403292861359
@@ -984,7 +984,6 @@ MonoBehaviour:
   isTopSort: 0
   topTarget: {fileID: 1820647521182250441}
   bottomTarget: {fileID: 3614930236853299348}
-  moveThroughTime: 0.5
 --- !u!61 &8963647814397716234
 BoxCollider2D:
   m_ObjectHideFlags: 0

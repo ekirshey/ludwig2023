@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using SadBrains.UI;
 using SadBrains.Utils;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ namespace SadBrains
         [Tooltip("UI")]
         [SerializeField] private GameObject swapUI;
         [SerializeField] private Timer timer;
+        [SerializeField] private HappinessDisplay happinessDisplay;
         
         [Tooltip("CatGPT")]
         [SerializeField] private Vector3 catGptStartPosition;
@@ -115,6 +117,7 @@ namespace SadBrains
             // Deliver one of each cat and happiness is above threshold
             if (_cootsTracker.Count == 0 && catGpt.Happiness >= happinessToContinue)
             {
+                happinessDisplay.ClearTarget();
                 Finish();
             }
             else if (catGpt.Happiness <= 0)
@@ -126,6 +129,7 @@ namespace SadBrains
         public override void SetActive()
         {
             base.SetActive();
+            happinessDisplay.AddTarget(happinessToContinue);
             Input.DeliveredGoodOutputObject += OnDeliveredGoodOutputObject;
             StartCoroutine(SwapEvent());
         }

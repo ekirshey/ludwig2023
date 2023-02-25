@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using SadBrains.UI;
 using SadBrains.Utils;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ namespace SadBrains
         [SerializeField] private int ioSpawnRate;
         [SerializeField] private int happinessToContinue;
         [SerializeField] private int outputWaitTime;
+        [SerializeField] private HappinessDisplay happinessDisplay;
         [SerializeField] private GameObject fillPhasePanel;
         [SerializeField] private Button skip;
         [SerializeField] private Timer timer;
@@ -93,6 +95,7 @@ namespace SadBrains
             // Deliver at least one of each cat before counting happiness
             if (_cootsTracker.Count == 0 && catGpt.Happiness >= happinessToContinue)
             {
+                happinessDisplay.ClearTarget();
                 Finish();
             }
             else if (catGpt.Happiness <= 0)
@@ -105,6 +108,7 @@ namespace SadBrains
         {
             base.SetActive();
             catGpt.HappinessLocked = false;
+            happinessDisplay.AddTarget(happinessToContinue);
             Input.DeliveredGoodOutputObject += OnDeliveredGoodOutputObject;
             StartCoroutine(IOTimer());
         }
