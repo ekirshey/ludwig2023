@@ -7,6 +7,7 @@ namespace SadBrains
     public class OutputObject : MonoBehaviour
     {
         public event Action Destroyed;
+        public Action EnteredTrigger;
         public static event Action<OutputObjectType> OutputObjectOffScreen;
         [SerializeField] private OutputObjectType type;
 

@@ -21,6 +21,7 @@ namespace SadBrains
         {
             var outputObject = col.GetComponent<OutputObject>();
             if (outputObject == null) return;
+            outputObject.EnteredTrigger?.Invoke();
             OutputObjectEntered?.Invoke(outputObject);
         }
     }

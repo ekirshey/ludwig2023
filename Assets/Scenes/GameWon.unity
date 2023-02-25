@@ -261,7 +261,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 1108036752, guid: 9a2004b880874134586dc0a18c3bc598, type: 3}
+    m_PressedSprite: {fileID: -22689840, guid: f719f3f8819246747841469ab8b5d3cc, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -275,8 +275,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SadBrains.GameOver, Assembly-CSharp
+      - m_Target: {fileID: 1493789801}
+        m_TargetAssemblyTypeName: SadBrains.GameEnd, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
@@ -307,8 +307,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -598681054, guid: 9a2004b880874134586dc0a18c3bc598, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: -835613093, guid: f719f3f8819246747841469ab8b5d3cc, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -664,6 +664,7 @@ GameObject:
   - component: {fileID: 1493789799}
   - component: {fileID: 1493789798}
   - component: {fileID: 1493789797}
+  - component: {fileID: 1493789801}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -756,6 +757,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1493789801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493789796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970cf8d7a9fb4f668bd18080bc72fe66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1836143539
 GameObject:
   m_ObjectHideFlags: 0
