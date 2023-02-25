@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SadBrains.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SadBrains
 {
@@ -18,7 +19,10 @@ namespace SadBrains
             [TextArea(3,10)]
             public string speech;
         }
-        
+
+        [SerializeField] private GameObject tutorialUI;
+        [SerializeField] private TutorialLevel level;
+        [SerializeField] private Button endTutorial;
         [SerializeField] private List<CatGptStep> steps;
 
         private int _currentStepIdx;
@@ -46,13 +50,26 @@ namespace SadBrains
             _currentStepIdx++;
             if (_currentStepIdx >= steps.Count)
             {
-                Finish();
+                yield return StartCoroutine( level.InitializeIO());
+                endTutorial.onClick.AddListener(() =>
+                {
+                    StartCoroutine(CleanUp());
+                });
+                tutorialUI.gameObject.SetActive(true);
             }
             else
             {
                 StartCoroutine(ExecuteStep(steps[_currentStepIdx]));
             }
             
+        }
+
+        private IEnumerator CleanUp()
+        {
+            tutorialUI.gameObject.SetActive(false);
+            CleanupDevices();
+            yield return StartCoroutine(level.RemoveIO());
+            Finish();
         }
             
         public override void SetActive()

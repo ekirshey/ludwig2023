@@ -109,5 +109,17 @@ namespace SadBrains
             });
         }
         
+        public void Initialize(int waitTime)
+        {
+            _waitTime = waitTime;
+            if (_waitTime > 0)
+            {
+                countdownText.gameObject.SetActive(true);
+                countdownText.text = _waitTime.ToString();
+            }
+
+            StartCoroutine(Wait());
+        }
+        
     }
 }

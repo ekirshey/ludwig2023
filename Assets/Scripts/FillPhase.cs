@@ -14,6 +14,13 @@ namespace SadBrains
         [SerializeField] private GameObject fillPhasePanel;
         [SerializeField] private Button skip;
         [SerializeField] private Timer timer;
+        
+        [Tooltip("CatGPT")]
+        [SerializeField] private Vector3 catGptStartPosition;
+        [SerializeField] private Vector3 catGptPosition;
+        [SerializeField] private float catGptSpeed;
+        [TextArea(3,10)]
+        [SerializeField] private List<string> speech;
 
         private Dictionary<OutputObjectType, int> _cootsTracker;
 
@@ -33,6 +40,17 @@ namespace SadBrains
                 {OutputObjectType.Tabby, 1},
                 {OutputObjectType.British, 1}
             };
+        }
+        
+        private IEnumerator CatGptIntro()
+        {
+            catGpt.transform.position = catGptStartPosition;
+            yield return StartCoroutine(catGpt.MoveToTarget(catGptPosition, catGptSpeed));
+            foreach (var text in speech)
+            {
+                yield return StartCoroutine(catGpt.Speak(text));
+            }
+            yield return StartCoroutine(catGpt.MoveToTarget(catGptStartPosition, catGptSpeed));
         }
         
         private void CreateIO()
@@ -58,6 +76,8 @@ namespace SadBrains
 
         private IEnumerator IOTimer()
         {
+            yield return StartCoroutine(CatGptIntro());
+            fillPhasePanel.gameObject.SetActive(true);
             while (true)
             {
                 CreateIO();
@@ -88,7 +108,6 @@ namespace SadBrains
         {
             base.SetActive();
             Input.DeliveredGoodOutputObject += OnDeliveredGoodOutputObject;
-            fillPhasePanel.gameObject.SetActive(true);
             StartCoroutine(IOTimer());
         }
 

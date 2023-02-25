@@ -10,8 +10,6 @@ namespace SadBrains
         [SerializeField] private GameObject debris;
         [SerializeField] private List<FishOutput> outputs;
         [SerializeField] private List<Input> inputs;
-        [SerializeField] private Vector3 debrisPosition;
-        [SerializeField] private int debrisSpeed;
         [SerializeField] private int ioEnterSpeed;
         [SerializeField] private int ioEnterDistance;
         [SerializeField] private ScreenShakeController.ScreenShakeParameters debrisShake;
@@ -44,14 +42,6 @@ namespace SadBrains
         {
             debris.gameObject.SetActive(true);
         }
-
-        public void CleanUp()
-        {
-            foreach (var output in outputs)
-            {
-                output.Pause();
-                output.CleanUp();
-            }
-        }
+        
     }
 }

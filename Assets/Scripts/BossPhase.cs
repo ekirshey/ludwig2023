@@ -1,8 +1,6 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using DG.Tweening;
 using SadBrains.UI;
 using UnityEngine;
 
@@ -10,7 +8,6 @@ namespace SadBrains
 {
     public class BossPhase : Phase
     {
-        public static event Action DestroyDevices;
         
         [Tooltip("Mechanics")]
         [SerializeField] private BossLevel bossLevel;
@@ -94,7 +91,7 @@ namespace SadBrains
         {
             PauseAll();
             bossLevel.gameObject.SetActive(true);
-            DestroyDevices?.Invoke();
+            CleanupDevices();
             topSorters.ChangeType(topFishSorter);
             bottomSorters.ChangeType(bottomFishSorter);
             yield return StartCoroutine(CatGptIntro());

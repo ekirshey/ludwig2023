@@ -8,6 +8,7 @@ namespace SadBrains
 {
     public abstract class Phase : MonoBehaviour
     {
+        public static event Action DestroyDevices;
         public event Action PhaseFinished;
         public static event Action Pause;
         public static event Action Resume;
@@ -49,6 +50,11 @@ namespace SadBrains
         protected void EnableAll()
         {
             Resume?.Invoke();
+        }
+
+        protected void CleanupDevices()
+        {
+            DestroyDevices?.Invoke();
         }
 
         protected IEnumerator Fade(Color targetColor, float duration)
