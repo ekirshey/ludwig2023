@@ -974,6 +974,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeToBlack: {fileID: 526488670}
   catGpt: {fileID: 18918776}
+  startPosition: {x: -5, y: 20, z: 0}
+  endPosition: {x: -5, y: 2, z: 0}
+  duration: 2
+  gameLostMessages:
+  - I'm sorry but your performance has not been up to par. Please collect your things
+    and leave.
   ioSpawnRate: 45
   happinessToContinue: 75
   outputWaitTime: 30
@@ -1318,8 +1324,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb971e6f5f14199b2e5e432fc81316a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeToBlack: {fileID: 0}
+  fadeToBlack: {fileID: 526488670}
   catGpt: {fileID: 18918776}
+  startPosition: {x: -5, y: 20, z: 0}
+  endPosition: {x: -5, y: 2, z: 0}
+  duration: 2
+  gameLostMessages:
+  - I'm sorry but your performance has not been up to par. Please collect your things
+    and leave.
   swapTime: 90
   numSwaps: 3
   happinessToContinue: 75
@@ -1327,6 +1339,7 @@ MonoBehaviour:
   swapUI: {fileID: 1422220015}
   timer: {fileID: 1422220016}
   happinessDisplay: {fileID: 247062646}
+  skip: {fileID: 1894663263}
   catGptStartPosition: {x: 25, y: 10, z: 0}
   catGptPosition: {x: -5, y: 1, z: 0}
   catGptSpeed: 2
@@ -1792,6 +1805,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeToBlack: {fileID: 526488670}
   catGpt: {fileID: 18918776}
+  startPosition: {x: -5, y: 20, z: 0}
+  endPosition: {x: -5, y: 2, z: 0}
+  duration: 2
+  gameLostMessages:
+  - I'm sorry but your performance has not been up to par. Please collect your things
+    and leave.
   swapTime: 60
   numSwaps: 1
   happinessToContinue: 75
@@ -1799,13 +1818,14 @@ MonoBehaviour:
   swapUI: {fileID: 1422220015}
   timer: {fileID: 1422220016}
   happinessDisplay: {fileID: 247062646}
+  skip: {fileID: 1894663263}
   catGptStartPosition: {x: -5, y: -20, z: 0}
   catGptPosition: {x: -5, y: 1, z: 0}
   catGptSpeed: 2
   speech:
   - Hmm you have delivered all the C.O.O.T.S as instructed, but this layout isn't
     quite right.
-  - Let's swap an Input and have you try again. I'll give you 30 seconds to adjust
+  - Let's swap an Input and have you try again. I'll give you 60 seconds to adjust
     the layout.
   screenShake: {fileID: 519420034}
   shakeParams:
@@ -2036,9 +2056,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: 0.055555556
+    width: 0.33333334
+    height: 0.3333333
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -3085,11 +3105,11 @@ MonoBehaviour:
     width: 43.4
     height: 6.8
   gamePhases:
-  - {fileID: 1615740471}
   - {fileID: 2048209442}
   - {fileID: 170207608}
   - {fileID: 466692395}
   - {fileID: 348865012}
+  - {fileID: 1615740471}
 --- !u!1 &695956951
 GameObject:
   m_ObjectHideFlags: 0
@@ -5259,6 +5279,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeToBlack: {fileID: 526488670}
   catGpt: {fileID: 18918776}
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
+  duration: 2
+  gameLostMessages: []
   bossLevel: {fileID: 1903582850}
   countdownTime: 90
   numFishToDeliver: 1
@@ -6442,7 +6466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1883338210
 Transform:
   m_ObjectHideFlags: 0
@@ -7598,6 +7622,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeToBlack: {fileID: 526488670}
   catGpt: {fileID: 18918776}
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
+  duration: 0
+  gameLostMessages: []
   tutorialUI: {fileID: 657672570}
   level: {fileID: 1542447352}
   endTutorial: {fileID: 49632586}

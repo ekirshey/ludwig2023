@@ -5,6 +5,7 @@ using DG.Tweening;
 using SadBrains.UI;
 using SadBrains.Utils;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SadBrains
 {
@@ -20,6 +21,7 @@ namespace SadBrains
         [SerializeField] private GameObject swapUI;
         [SerializeField] private Timer timer;
         [SerializeField] private HappinessDisplay happinessDisplay;
+        [SerializeField] private Button skip;
         
         [Tooltip("CatGPT")]
         [SerializeField] private Vector3 catGptStartPosition;
@@ -95,14 +97,20 @@ namespace SadBrains
             
             swapUI.gameObject.SetActive(true);
             timer.TimerFinished += OnTimerFinished;
+            skip.onClick.AddListener(BeginSpawn);
             StartCoroutine(timer.RunTimer(swapTime));
         }
 
-        private void OnTimerFinished()
+        private void BeginSpawn()
         {
             EnableAll();
             timer.TimerFinished -= OnTimerFinished;
             swapUI.gameObject.SetActive(false);
+        }
+
+        private void OnTimerFinished()
+        {
+            BeginSpawn();
         }
 
         private void PhaseLost()

@@ -15,7 +15,12 @@ namespace SadBrains
 
         [SerializeField] private SpriteRenderer fadeToBlack;
         [SerializeField] protected CatGPT catGpt;
-
+        [SerializeField] private Vector3 startPosition;
+        [SerializeField] private Vector3 endPosition;
+        [SerializeField] private float duration;
+        [TextArea(3,10)]
+        [SerializeField] public List<string> gameLostMessages;
+        
         protected bool Active;
         protected List<GameManager.IOPair> AvailableIOPairs;
         protected List<Vector3> AvailableLeftIOSpawns;
@@ -72,6 +77,10 @@ namespace SadBrains
         protected IEnumerator GameLost()
         {
             Active = false;
+            catGpt.transform.position = startPosition;
+            yield return StartCoroutine(catGpt.MoveToTarget(endPosition, duration));
+            yield return StartCoroutine(catGpt.Speak(gameLostMessages));
+            
             yield return StartCoroutine(Fade(Color.black, 1.0f));
             GameManager.Instance.GameLost();
         }

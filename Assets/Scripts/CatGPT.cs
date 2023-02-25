@@ -72,6 +72,10 @@ namespace SadBrains
         {
             if (HappinessLocked) return;
             Happiness -= deduction;
+            if (Happiness < 0)
+            {
+                Happiness = 0;
+            }
         }
 
         public IEnumerator Speak(List<string> dialog)
